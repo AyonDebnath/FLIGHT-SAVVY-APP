@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'view/profile_view.dart';
+import 'model/user.dart';
 
 void main() {
   runApp(const MyApp());
@@ -90,7 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
+
+              // mock data. Needs to be changed after the auth is working
+              User user = User(name: 'Ayon', email: 'ayonnath', profileImage: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fom.m.wikipedia.org%2Fwiki%2FFile%3ASolid_grey.svg&psig=AOvVaw05KgOtkLmDpVxuYbPuVcH9&ust=1700418707871000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCND0hbqXzoIDFQAAAAAdAAAAABAE');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Profile(user: user)));
               print('Button Pressed');
             },
           ),
