@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'view/profile_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -85,6 +86,15 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
+              print('Button Pressed');
+            },
+          ),
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
