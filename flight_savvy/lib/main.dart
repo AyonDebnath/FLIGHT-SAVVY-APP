@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'view/profile_view.dart';
+import 'model/user.dart';
 
 void main() {
   runApp(const MyApp());
@@ -85,6 +87,18 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+
+              // mock data. Needs to be changed after the auth is working
+              User user = User(name: 'Ayon', email: 'ayonnath', profileImage: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fom.m.wikipedia.org%2Fwiki%2FFile%3ASolid_grey.svg&psig=AOvVaw05KgOtkLmDpVxuYbPuVcH9&ust=1700418707871000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCND0hbqXzoIDFQAAAAAdAAAAABAE');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Profile(user: user)));
+              print('Button Pressed');
+            },
+          ),
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
