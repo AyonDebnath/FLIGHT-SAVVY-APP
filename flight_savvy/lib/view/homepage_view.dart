@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
         currentIndex: 0, // current index is set to profile
         onTap: (index) {
           if(index==2){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Profile(username: username,)));
           }
           // Handle navigation tap
         },
