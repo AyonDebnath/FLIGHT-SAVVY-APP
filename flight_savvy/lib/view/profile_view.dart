@@ -12,52 +12,6 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-  //       title: Text("User Profile"),
-  //     ),
-  //     body: Center(child: Padding(
-  //       padding: const EdgeInsets.all(16.0),
-  //       child: Column(
-  //         crossAxisAlignment: CrossAxisAlignment.center,
-  //         children: [
-  //           CircleAvatar(
-  //             radius: 50.0,
-  //             backgroundImage: NetworkImage(widget.user.profileImage),
-  //           ),
-  //           SizedBox(height: 16.0),
-  //           Text(
-  //             widget.user.name,
-  //             style: TextStyle(
-  //               fontSize: 24.0,
-  //               fontWeight: FontWeight.bold,
-  //             ),
-  //           ),
-  //           SizedBox(height: 8.0),
-  //           Text(
-  //             widget.user.email,
-  //             style: TextStyle(
-  //               fontSize: 16.0,
-  //               color: Colors.grey,
-  //             ),
-  //           ),
-  //           SizedBox(height: 24.0),
-  //           ElevatedButton(
-  //             onPressed: () {
-  //               // Add your log-out logic here
-  //               print('Log Out Pressed');
-  //             },
-  //             child: Text('Log Out'),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //     ),
-  //   );
-  // }
 
   Widget build(BuildContext context) {
     return ProfilePage();
@@ -71,7 +25,14 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Profile'),
         centerTitle: true,
-        backgroundColor: Colors.purpleAccent,
+        backgroundColor: Colors.white,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1.0),
+          child: Container(
+            color: Colors.grey,
+            height: 1.0,
+          ), // Set the preferred size of the underline
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -95,7 +56,24 @@ class ProfilePage extends StatelessWidget {
                       onPressed: () {
                         // Handle login or signup press
                       },
-                      child: Text('Log in or sign up'),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.black, // Set the background color of the button
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0), // Set rounded corners
+                        ),
+                        elevation: 4.0, // Set the elevation of the button
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 10.0,),
+                        child: Text(
+                          'Log in or sign up',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white, // Set the text color
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -152,7 +130,7 @@ class ProfilePage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Colors.blueGrey,
                         // Replace with your desired background color
                         borderRadius: BorderRadius.circular(
                             15), // Set the border radius for rounded corners
@@ -189,7 +167,7 @@ class ProfilePage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Colors.blueGrey,
                         // Replace with your desired background color
                         borderRadius: BorderRadius.circular(
                             15.0), // Set the border radius for rounded corners
@@ -226,7 +204,7 @@ class ProfilePage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Colors.blueGrey,
                         // Replace with your desired background color
                         borderRadius: BorderRadius.circular(
                             15.0), // Set the border radius for rounded corners
@@ -263,7 +241,7 @@ class ProfilePage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Colors.blueGrey,
                         // Replace with your desired background color
                         borderRadius: BorderRadius.circular(
                             15.0), // Set the border radius for rounded corners
@@ -332,7 +310,6 @@ class ProfilePage extends StatelessWidget {
                     ),
                     Image.asset(
                       'assets/traveller.png',
-                      // height: 21, // Set the desired height
                       width: 61, // Set the desired width
                     ),
                   ],
