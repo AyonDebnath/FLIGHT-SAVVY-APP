@@ -152,7 +152,7 @@ class ProfilePage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black38,
+                        color: Colors.black,
                         // Replace with your desired background color
                         borderRadius: BorderRadius.circular(
                             15), // Set the border radius for rounded corners
@@ -164,10 +164,10 @@ class ProfilePage extends StatelessWidget {
                           Image.asset(
                             'assets/details.png',
                             // height: 21, // Set the desired height
-                            width: 105, // Set the desired width
+                            width: 100, // Set the desired width
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 15,
                           ),
                           Text(
                             'Details',
@@ -189,7 +189,7 @@ class ProfilePage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black38,
+                        color: Colors.black,
                         // Replace with your desired background color
                         borderRadius: BorderRadius.circular(
                             15.0), // Set the border radius for rounded corners
@@ -226,7 +226,7 @@ class ProfilePage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black38,
+                        color: Colors.black,
                         // Replace with your desired background color
                         borderRadius: BorderRadius.circular(
                             15.0), // Set the border radius for rounded corners
@@ -263,7 +263,7 @@ class ProfilePage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.black38,
+                        color: Colors.black,
                         // Replace with your desired background color
                         borderRadius: BorderRadius.circular(
                             15.0), // Set the border radius for rounded corners
@@ -296,27 +296,91 @@ class ProfilePage extends StatelessWidget {
               itemCount: 4, // Number of items in the grid
             ),
           ),
-          //
-          // // Add cards for "Your details", "Your trips", etc.
-          // Card(
-          //   child: ListTile(
-          //     leading: Icon(Icons.account_circle),
-          //     title: Text('Your details'),
-          //     onTap: () {
-          //       // Handle "Your details" press
-          //     },
-          //   ),
-          // ),
-          // Card(
-          //   child: ListTile(
-          //     leading: Icon(Icons.airplane_ticket),
-          //     title: Text('Your trips'),
-          //     onTap: () {
-          //       // Handle "Your trips" press
-          //     },
-          //   ),
-          // ),
-          // // ... Add more cards for other options
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20.0, bottom: 20),
+            // Adjust the left padding as needed
+            child: const Text(
+              "Recommended Reads",
+              style: TextStyle(fontSize: 27.0, fontWeight: FontWeight.bold),
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            child: Card(
+              color: Colors.white,
+              child: ListTile(
+                title: const Text(
+                  'Why choose us?',
+                  style: TextStyle(
+                    fontSize: 23.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+                subtitle: Row(
+                  children: [
+                    const Text(
+                      'Travel that works for you and the planet. \nFind out more.',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    Image.asset(
+                      'assets/traveller.png',
+                      // height: 21, // Set the desired height
+                      width: 61, // Set the desired width
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  // Handle "Your details" press
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            child: Card(
+              color: Colors.white,
+              child: ListTile(
+                title: const Text(
+                  'Sustainability',
+                  style: TextStyle(
+                    fontSize: 23.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+                subtitle: Row(
+                  children: [
+                    Image.asset(
+                      'assets/sustainable.png',
+                      // height: 21, // Set the desired height
+                      width: 65, // Set the desired width
+                    ),
+                    SizedBox(width: 11,),
+                    const Text(
+                      'Read how we\'ll lead the transformation\nto greener travel',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+
+                  ],
+                ),
+                onTap: () {
+                  // Handle "Your details" press
+                },
+              ),
+            ),
+          ),
+          // ... Add more cards for other options
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
