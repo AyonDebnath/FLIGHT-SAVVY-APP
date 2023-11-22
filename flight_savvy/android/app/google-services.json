@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "988598383985",
+    "project_id": "fly-savvy",
+    "storage_bucket": "fly-savvy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988598383985:android:ae52313f5dfb9f0d9bb2d0",
+        "android_client_info": {
+          "package_name": "com.example.flight_savvy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988598383985-n5s20a9sbhjd4rfjhnlc7n6fhnnlfjfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNxOd5soWRRaKGTYtZju1S0gQugf7ZHD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988598383985-n5s20a9sbhjd4rfjhnlc7n6fhnnlfjfa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "988598383985-br6atjhjbbj08k63m90io9usnkaqmhvr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flightSavvy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

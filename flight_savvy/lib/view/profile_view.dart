@@ -1,24 +1,42 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../model/user.dart';
+import 'homepage_view.dart';
+import 'login_view.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({super.key, required this.user});
+  final String username;
 
-  final User user;
+  const Profile({super.key, required this.username});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<Profile> createState() => _ProfileState(username: username);
 }
 
 class _ProfileState extends State<Profile> {
+  final String username;
+  _ProfileState({required this.username});
 
   Widget build(BuildContext context) {
-    return ProfilePage();
+    return ProfilePage(username: username,);
   }
 }
 
 class ProfilePage extends StatelessWidget {
+  final String username;
+  ProfilePage({required this.username});
+
+  void _signOut(BuildContext context) {
+    try {
+      FirebaseAuth.instance.signOut();
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => LoginView()),
+        (Route<dynamic> route) => false,
+      );
+    } catch (e) {
+      // Handle errors
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,20 +71,24 @@ class ProfilePage extends StatelessWidget {
                   child: ButtonTheme(
                     minWidth: 100.0, // Set the desired width
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Handle login or signup press
+                      onPressed: () async {
+                        _signOut(context);
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.black, // Set the background color of the button
+                        primary: Colors.black,
+                        // Set the background color of the button
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0), // Set rounded corners
+                          borderRadius: BorderRadius.circular(
+                              10.0), // Set rounded corners
                         ),
                         elevation: 4.0, // Set the elevation of the button
                       ),
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 10.0,),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10.0,
+                        ),
                         child: Text(
-                          'Log in or sign up',
+                          'Log out',
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
@@ -341,14 +363,15 @@ class ProfilePage extends StatelessWidget {
                       // height: 21, // Set the desired height
                       width: 65, // Set the desired width
                     ),
-                    SizedBox(width: 11,),
+                    SizedBox(
+                      width: 11,
+                    ),
                     const Text(
                       'Read how we\'ll lead the transformation\nto greener travel',
                       style: TextStyle(
                         color: Colors.black,
                       ),
                     ),
-
                   ],
                 ),
                 onTap: () {
@@ -377,7 +400,14 @@ class ProfilePage extends StatelessWidget {
         ],
         currentIndex: 2, // current index is set to profile
         onTap: (index) {
-          // Handle navigation tap
+          if (index == 0) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                  builder: (context) =>
+                      HomePage(username: username)),
+              (Route<dynamic> route) => false,
+            );
+          }
         },
       ),
     );
