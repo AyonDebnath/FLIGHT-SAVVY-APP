@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flight_savvy/view/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'homepage_view.dart';
 import 'login_view.dart';
+import 'details_view.dart';
 
 class Profile extends StatefulWidget {
   final String username;
@@ -151,7 +151,9 @@ class ProfilePage extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       // Handle tap on the grid item
-                      print('Tapped on item $index');
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => details()),
+                      );
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -386,7 +388,7 @@ class ProfilePage extends StatelessWidget {
           // ... Add more cards for other options
         ],
       ),
-      
+
     );
   }
 }
