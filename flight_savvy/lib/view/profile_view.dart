@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flight_savvy/view/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'homepage_view.dart';
 import 'login_view.dart';
@@ -17,7 +18,9 @@ class _ProfileState extends State<Profile> {
   _ProfileState({required this.username});
 
   Widget build(BuildContext context) {
-    return ProfilePage(username: username,);
+    return ProfilePage(
+      username: username,
+    );
   }
 }
 
@@ -383,33 +386,7 @@ class ProfilePage extends StatelessWidget {
           // ... Add more cards for other options
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.card_travel),
-            label: 'Trips',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: 2, // current index is set to profile
-        onTap: (index) {
-          if (index == 0) {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                  builder: (context) =>
-                      HomePage(username: username)),
-              (Route<dynamic> route) => false,
-            );
-          }
-        },
-      ),
+      
     );
   }
 }
