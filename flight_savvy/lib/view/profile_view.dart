@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'homepage_view.dart';
 import 'login_view.dart';
 import 'details_view.dart';
+import 'support_view.dart';
 
 class Profile extends StatefulWidget {
   final String username;
@@ -264,7 +265,9 @@ class ProfilePage extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       // Handle tap on the grid item
-                      print('Tapped on item $index');
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => support()),
+                      );
                     },
                     child: Container(
                       decoration: BoxDecoration(
