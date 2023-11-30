@@ -33,7 +33,7 @@ class _FlightListState extends State<FlightList> {
 
     switch (sortOption) {
       case FlightSort.best:
-        flights.sort((a, b) => a[0].compareTo(b[0])); // Sort by duration
+        flights.sort((a, b) => a[4].compareTo(b[4])); // Sort by arrivalTime
         break;
       case FlightSort.fastest:
         flights.sort((a, b) => a[0].compareTo(b[0])); // Sort by duration
