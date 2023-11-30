@@ -84,7 +84,7 @@ class HomePageState extends State<SearchPage> {
                     ),
                   ),
                   Expanded(
-                      child: flightList(isBool, [
+                      child: FlightList(isBool, [
                     selectedOption1,
                     selectedOption2,
                     isOneWay,
