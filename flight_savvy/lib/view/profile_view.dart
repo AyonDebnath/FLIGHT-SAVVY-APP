@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'homepage_view.dart';
 import 'login_view.dart';
+import 'details_view.dart';
+import 'support_view.dart';
 
 class Profile extends StatefulWidget {
   final String username;
@@ -17,7 +19,9 @@ class _ProfileState extends State<Profile> {
   _ProfileState({required this.username});
 
   Widget build(BuildContext context) {
-    return ProfilePage(username: username,);
+    return ProfilePage(
+      username: username,
+    );
   }
 }
 
@@ -148,6 +152,9 @@ class ProfilePage extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       // Handle tap on the grid item
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => details()),
+                      );
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -258,7 +265,9 @@ class ProfilePage extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       // Handle tap on the grid item
-                      print('Tapped on item $index');
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => support()),
+                      );
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -381,33 +390,6 @@ class ProfilePage extends StatelessWidget {
           ),
           // ... Add more cards for other options
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.card_travel),
-            label: 'Trips',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: 2, // current index is set to profile
-        onTap: (index) {
-          if (index == 0) {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                  builder: (context) =>
-                      HomePage(username: username)),
-              (Route<dynamic> route) => false,
-            );
-          }
-        },
       ),
 
     );

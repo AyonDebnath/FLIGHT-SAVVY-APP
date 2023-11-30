@@ -3,17 +3,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'login_view.dart';
 import 'profile_view.dart';
 
-class HomePage extends StatelessWidget {
+class HomePag2 extends StatelessWidget {
   final String username;
 
-  HomePage({required this.username});
+  HomePag2({required this.username});
 
   Future<void> _signOut(BuildContext context) async {
     try {
       await FirebaseAuth.instance.signOut();
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => LoginView()),
-            (Route<dynamic> route) => false,
+        (Route<dynamic> route) => false,
       );
     } catch (e) {
       // Handle errors
@@ -47,8 +47,13 @@ class HomePage extends StatelessWidget {
         ],
         currentIndex: 0, // current index is set to profile
         onTap: (index) {
-          if(index==2){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Profile(username: username,)));
+          if (index == 2) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Profile(
+                          username: username,
+                        )));
           }
           // Handle navigation tap
         },
