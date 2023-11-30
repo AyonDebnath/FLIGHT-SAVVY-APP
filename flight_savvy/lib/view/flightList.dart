@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '/controller/controller.dart';
 import 'flightCard.dart';
+import 'flightCardExpandable.dart';
+import 'package:animations/animations.dart';
 
 class flightList extends StatelessWidget {
   List<dynamic> vals;
@@ -11,7 +13,7 @@ class flightList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("$toShow in flightlistState");
+    // print("$toShow in flightlistState");
     if (toShow == false) {
       return Scaffold(
           backgroundColor: Colors.transparent,
@@ -51,17 +53,37 @@ class flightList extends StatelessWidget {
                   itemBuilder: (context, index) {
                     var flight_instance = data[index];
 
-                    return Center(
-                      child: FlightCard(
-                        duration: flight_instance[0],
-                        price: flight_instance[6],
-                        airline: 'Lufthansa',
-                        arrivalTime: flight_instance[4],
-                        flightNumber: '202131',
-                        departure: flight_instance[1].toString(),
-                        destination: flight_instance[3].toString(),
-                        departureTime: flight_instance[2],
-                      ),
+                    return OpenContainer(
+                        closedBuilder: (BuildContext context, VoidCallback _) {
+                          return Center(
+                            child: FlightCard(
+                              duration: flight_instance[0],
+                              price: flight_instance[6],
+                              airline: 'Lufthansa',
+                              arrivalTime: flight_instance[4],
+                              flightNumber: '202131',
+                              departure: flight_instance[1].toString(),
+                              destination: flight_instance[3].toString(),
+                              departureTime: flight_instance[2],
+                            ),
+                          );
+                        },
+                        openBuilder: (BuildContext context, VoidCallback openContainer) {
+                          return Expandable (
+                            duration: flight_instance[0],
+                            price: flight_instance[6],
+                            airline: 'Lufthansa',
+                            arrivalTime: flight_instance[4],
+                            flightNumber: '202131',
+                            departure: flight_instance[1].toString(),
+                            destination: flight_instance[3].toString(),
+                            departureTime: flight_instance[2],
+                            segments: flight_instance.last.map((element) => [element]).toList(),
+
+
+                          );
+                          (onPressed: openContainer);
+                        }
                     );
                   });
             }),

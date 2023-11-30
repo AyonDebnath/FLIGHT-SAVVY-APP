@@ -23,7 +23,7 @@ class HomePageState extends State<SearchPage> {
   var cont = controller();
   bool doShow = false;
   int SelectVal = 0;
-  List<String> texts = ['One way', 'Two way'];
+  List<String> texts = ['One way', 'Round trip'];
   DateTime? startDate = DateTime.now();
   DateTime? endDate = DateTime.now();
   String? selectedOption1;

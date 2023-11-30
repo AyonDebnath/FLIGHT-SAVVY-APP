@@ -134,7 +134,24 @@ List<List<dynamic>> extractFlightData(List<Map<String, dynamic>> jsonData) {
         price['currency'],
         price['total'],
         segments.length,
+        []
       ]);
+      for (Map<String, dynamic> segment in segments) {
+        Map<String, dynamic> departure = segment['departure'];
+        Map<String, dynamic> arrival = segment['arrival'];
+        Map<String, dynamic> aircraft = segment['aircraft'];
+
+        result.last[8].add([
+          departure['iataCode'],
+          departure['at'],
+          arrival['iataCode'],
+          arrival['at'],
+          segment['duration'],
+          segment['carrierCode'], // Carrier Code
+          aircraft['code'], // Aircraft Code
+          segment['number'], // Aircraft Number
+        ]);
+      }
     } catch (e) {
       print('Error extracting flight data: $e');
     }

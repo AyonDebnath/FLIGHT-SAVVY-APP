@@ -1,3 +1,4 @@
+import 'package:flight_savvy/main.dart';
 import 'package:flight_savvy/view/chatPage.dart';
 import 'package:flight_savvy/view/profile_view.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +44,19 @@ class HomeState extends State<HomePage> {
 
           return Scaffold(
             body: pages[currIndex],
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                MyApp.themeNotifier.value = MyApp.themeNotifier.value == ThemeMode.light
+                    ? ThemeMode.dark
+                    : ThemeMode.light;
+              },
+              backgroundColor: Colors.white70,
+              child: Icon(
+                MyApp.themeNotifier.value == ThemeMode.light
+                    ? Icons.dark_mode
+                    : Icons.light_mode,
+              ),
+            ),
             bottomNavigationBar: CurvedNavigationBar(
               backgroundColor: Colors.lightBlueAccent,
               animationDuration: const Duration(milliseconds: 350),
