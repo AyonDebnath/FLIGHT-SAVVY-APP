@@ -54,13 +54,6 @@ class ProfilePage extends StatelessWidget {
             height: 1.0,
           ), // Set the preferred size of the underline
         ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Handle back button press
-            Navigator.of(context).pop();
-          },
-        ),
       ),
       body: ListView(
         children: [

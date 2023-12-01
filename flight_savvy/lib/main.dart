@@ -6,7 +6,6 @@ import 'package:flight_savvy/view/login_view.dart';
 import 'package:provider/provider.dart';
 import 'locator.dart';
 import 'view/profile_view.dart';
-import 'model/user.dart';
 
 void main() async {
   setUpLocator();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'FAQ_view.dart';
+import 'contactUs_view.dart';
 
 class support extends StatefulWidget {
   const support({super.key});
@@ -110,7 +111,9 @@ class CardList extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        print("index:$index pressed");
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => ContactUs()),
+        );
       },
       child: Card(
         elevation: 5.0,
