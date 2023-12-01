@@ -30,6 +30,7 @@ class _FlightListState extends State<FlightList> {
       widget.vals[4],
       widget.vals[5],
     );
+    // print(widget.vals[5]);
 
     switch (sortOption) {
       case FlightSort.best:
