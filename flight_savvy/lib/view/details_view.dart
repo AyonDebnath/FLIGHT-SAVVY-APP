@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'user_info.dart';
 
 class details extends StatefulWidget {
   const details({super.key});
@@ -42,31 +43,39 @@ class CardList extends StatelessWidget {
     return Column(
       children: <Widget>[
         _buildClickableCard(
-          title: 'Login info',
+          title: 'User info',
           subtitle: '',
           color: Colors.white,
           index: 0,
+          context: context,
         ),
         _buildClickableCard(
           title: 'Traveller info',
           subtitle: '',
           color: Colors.white,
           index: 1,
+          context: context,
         ),
         _buildClickableCard(
           title: 'Account Management',
           subtitle: '',
           color: Colors.white,
           index: 1,
+          context: context,
         ),
         // Add more cards as needed
       ],
     );
   }
 
-  Widget _buildClickableCard({required String title, required String subtitle, required Color color, required int index}) {
+  Widget _buildClickableCard({required String title, required String subtitle, required Color color, required int index, required context}) {
     return GestureDetector(
       onTap: () {
+        if(index == 0) {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => userInfo()),
+          );
+        }
         print("index:$index pressed");
       },
       child: Card(

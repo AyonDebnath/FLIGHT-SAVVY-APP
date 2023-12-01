@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11037686-61b9-4a32-883c-7339a9f7287a" name="Changes" comment="Revert &quot;details_view.dart added&quot;&#10;&#10;This reverts commit 5eb671e4">
-      <change afterPath="$PROJECT_DIR$/flight_savvy/lib/view/contactUs_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/profile_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/profile_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/support_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/support_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flight_savvy/lib/controller/user_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flight_savvy/lib/model/user.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flight_savvy/lib/view/user_info.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/details_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/details_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +38,16 @@
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/ayondebnath/Desktop/MUN (10th Semester) Fall/Comp 4768(Flutter)/Comp4768_Project/flight_savvy/lib/controller",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/flight_savvy/lib/controller" />
+      <recent name="$PROJECT_DIR$/flight_savvy/lib/model" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/flight_savvy/lib/main.dart" />
@@ -113,5 +114,31 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Revert &quot;details_view.dart added&quot;&#10;&#10;This reverts commit 5eb671e4" />
     <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;details_view.dart added&quot;&#10;&#10;This reverts commit 5eb671e4" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/flight_savvy/lib/view/user_info.dart</url>
+          <line>39</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/flight_savvy/lib/view/user_info.dart</url>
+          <line>41</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/flight_savvy/lib/view/user_info.dart</url>
+          <line>40</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/flight_savvy/lib/view/user_info.dart</url>
+          <line>47</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
