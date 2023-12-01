@@ -116,6 +116,6 @@ flutter:
     - assets/sustainable.png
     - assets/images/logo.png
     - lib/assets/airpots.csv
-    - lib\assets\airplane background.png
-    - lib\assets\floght_logo.png
+    - lib/assets/airplane background.png
+    - lib/assets/floght_logo.png
 
