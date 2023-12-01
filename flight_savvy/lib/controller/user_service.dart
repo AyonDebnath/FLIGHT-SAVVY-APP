@@ -16,8 +16,38 @@ class UserService {
 
   Future<String> getName(String id) async {
     DocumentSnapshot user = await userCollection.doc(id).get();
-    String Name =  user['Name'];
+    late String Name;
+    try{
+      Name =  user['Name'];
+    }
+    catch(e){
+      Name = '';
+    }
     return Name;
+  }
+
+  Future<String> getPhone(String id) async {
+    DocumentSnapshot user = await userCollection.doc(id).get();
+    late String Phone;
+    try{
+      Phone =  user['Phone'];
+    }
+    catch(e){
+      Phone = '';
+    }
+    return Phone;
+  }
+
+  Future<String> getAddress(String id) async {
+    DocumentSnapshot user = await userCollection.doc(id).get();
+    late String Address;
+    try{
+      Address =  user['Address'];
+    }
+    catch(e){
+      Address = '';
+    }
+    return Address;
   }
 
   Future<void> updatePhone(String id, String name) async {
