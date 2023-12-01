@@ -38,12 +38,15 @@ class controller {
   }
 
   Future<List<List<dynamic>>> getDate(String origin, String destination,
-      bool isOneway, String leave, String retur, int adults) async {
+      bool isOneway, String leave, String retur, bool isNonStop) async {
     int count = 0;
     print(origin);
     print(destination);
     print(leave);
     print(retur);
+    int stops = 0;
+    bool isNonStop = false;
+
     if (isOneway == true) {
       retur = '';
     }
@@ -60,7 +63,7 @@ class controller {
           'children': '0',
           'infants': '0',
           'travelClass': 'ECONOMY',
-          'max': '10',
+          'max': '30',
           'currencyCode': 'CAD',
         };
 
@@ -74,10 +77,35 @@ class controller {
         }
         var res2 = json.decode(res.body) as Map<String, dynamic>;
         List<Map<String, dynamic>> allFlight = await toMap(await res2["data"]);
-        var extracted = await extractFlightData(allFlight);
 
-        print(extracted);
-        return extracted;
+        int stopsCount = 0;
+
+        // Filter flights based on the number of stops
+        List<Map<String, dynamic>> filteredFlights =
+        allFlight.where((flight) {
+          List<dynamic> segments = flight['itineraries'][0]['segments'];
+          print(segments);
+          stopsCount = segments.length - 1;
+          print(stopsCount);
+          // print(stopsCount == stops);
+
+          return stopsCount == stops;
+        }).toList();
+
+        print(isNonStop);
+
+        if (isNonStop == true) {
+          var extracted = await extractFlightData(filteredFlights);
+          print(extracted);
+          return extracted;
+        }
+        else {
+          var extracted = await extractFlightData(allFlight);
+          print(extracted);
+          return extracted;
+        }
+
+
       } catch (e) {
         await setToken();
         count++;
@@ -134,7 +162,24 @@ List<List<dynamic>> extractFlightData(List<Map<String, dynamic>> jsonData) {
         price['currency'],
         price['total'],
         segments.length,
+        []
       ]);
+      for (Map<String, dynamic> segment in segments) {
+        Map<String, dynamic> departure = segment['departure'];
+        Map<String, dynamic> arrival = segment['arrival'];
+        Map<String, dynamic> aircraft = segment['aircraft'];
+
+        result.last[8].add([
+          departure['iataCode'],
+          departure['at'],
+          arrival['iataCode'],
+          arrival['at'],
+          segment['duration'],
+          segment['carrierCode'], // Carrier Code
+          aircraft['code'], // Aircraft Code
+          segment['number'], // Aircraft Number
+        ]);
+      }
     } catch (e) {
       print('Error extracting flight data: $e');
     }

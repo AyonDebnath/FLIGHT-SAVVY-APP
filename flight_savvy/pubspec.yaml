@@ -44,6 +44,10 @@ dependencies:
   xml2json: ^6.2.1
   xml: ^6.3.0
   csv: ^5.1.1
+  animations: ^2.0.8
+  fluttertoast: ^8.2.4
+  provider: ^6.1.1
+  get_it: ^7.6.4
   url_launcher: ^6.0.12
 
 
