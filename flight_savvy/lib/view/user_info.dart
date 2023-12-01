@@ -80,6 +80,79 @@ class _userInfoState extends State<userInfo> {
                         ),
                       ],
                     ),
+
+                    Visibility(
+                      visible: users[i].Name != null && users[i].Name != '',
+                      child: Row(
+                        children: [
+                          Text(
+                            'Name:',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            users[i].Name!,
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Visibility(
+                      visible: users[i].Phone != null && users[i].Phone != '',
+                      child: Row(
+                        children: [
+                          Text(
+                            'Phone:',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            users[i].Phone!,
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Visibility(
+                      visible: users[i].Address != null && users[i].Address != '',
+                      child: Row(
+                        children: [
+                          Text(
+                            'Address:',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            users[i].Address!,
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
                   ],
                 ),
               );
