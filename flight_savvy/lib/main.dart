@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flight_savvy/view/login_view.dart';
 import 'view/profile_view.dart';
-import 'model/user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
