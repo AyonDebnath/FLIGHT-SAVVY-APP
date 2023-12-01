@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'user_info.dart';
+import 'editInfo_view.dart';
 
 class details extends StatefulWidget {
   const details({super.key});
@@ -50,14 +51,7 @@ class CardList extends StatelessWidget {
           context: context,
         ),
         _buildClickableCard(
-          title: 'Traveller info',
-          subtitle: '',
-          color: Colors.white,
-          index: 1,
-          context: context,
-        ),
-        _buildClickableCard(
-          title: 'Account Management',
+          title: 'Edit info',
           subtitle: '',
           color: Colors.white,
           index: 1,
@@ -74,6 +68,11 @@ class CardList extends StatelessWidget {
         if(index == 0) {
           Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => userInfo()),
+          );
+        }
+        if(index == 1) {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => editInfo()),
           );
         }
         print("index:$index pressed");
