@@ -53,10 +53,16 @@ class _userInfoState extends State<userInfo> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'The following information is available: ',
-                      style: TextStyle(
-                        fontSize: 20,
+
+                    Center(
+                      child: CircleAvatar(
+                        radius: 60, // Set the radius of the circle
+                        backgroundColor: Colors.grey[300], // Set the background color
+                        child: CircleAvatar(
+                          radius: 55, // Adjust the radius to control the border thickness
+                          backgroundImage: AssetImage(
+                              'assets/profile_picture.jpg'), // Set your profile picture here
+                        ),
                       ),
                     ),
                     SizedBox(height: 20,),

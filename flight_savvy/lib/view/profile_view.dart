@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'details_view.dart';
+import 'account_view.dart';
 import 'settings_view.dart';
 import 'support_view.dart';
 
@@ -94,7 +94,7 @@ class ProfilePage extends StatelessWidget {
                     onTap: () {
                       // Handle tap on the grid item
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => details()),
+                        MaterialPageRoute(builder: (context) => account()),
                       );
                     },
                     child: Container(
@@ -117,7 +117,7 @@ class ProfilePage extends StatelessWidget {
                             height: 15,
                           ),
                           Text(
-                            'Details',
+                            'Account',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

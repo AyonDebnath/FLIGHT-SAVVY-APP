@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11037686-61b9-4a32-883c-7339a9f7287a" name="Changes" comment="Revert &quot;details_view.dart added&quot;&#10;&#10;This reverts commit 5eb671e4">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/controller/user_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/controller/user_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/details_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/account_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/editInfo_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/editDetails_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/profile_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/profile_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/settings_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/settings_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/user_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/user_info.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,19 +48,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "/Users/ayondebnath/Desktop/MUN (10th Semester) Fall/Comp 4768(Flutter)/Comp4768_Project/flight_savvy/lib/controller",
-    "settings.editor.selected.configurable": "dart.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ayondebnath/Desktop/MUN (10th Semester) Fall/Comp 4768(Flutter)/Comp4768_Project/flight_savvy/lib/controller&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/flight_savvy/lib/controller" />
@@ -124,9 +138,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/flight_savvy/lib/view/user_info.dart</url>
-          <line>84</line>
-          <option name="timeStamp" value="22" />
+          <url>file://$PROJECT_DIR$/flight_savvy/lib/view/editDetails_view.dart</url>
+          <line>39</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/flight_savvy/lib/view/editDetails_view.dart</url>
+          <line>150</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/flight_savvy/lib/view/editDetails_view.dart</url>
+          <line>162</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
