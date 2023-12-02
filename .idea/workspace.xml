@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11037686-61b9-4a32-883c-7339a9f7287a" name="Changes" comment="Revert &quot;details_view.dart added&quot;&#10;&#10;This reverts commit 5eb671e4" />
+    <list default="true" id="11037686-61b9-4a32-883c-7339a9f7287a" name="Changes" comment="The selection for flights with stops now added on the search page. &#10;&#10;main.dart edited to implement selection for total number of passengers.">
+      <change afterPath="$PROJECT_DIR$/flight_savvy/lib/view/segmentFlights.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/controller/controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/controller/controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/SearchPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/SearchPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/flightCardExpandable.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/flightCardExpandable.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/passengerView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/passengerView.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/widgets/passengerList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/widgets/passengerList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/windows/flutter/generated_plugins.cmake" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -65,9 +65,9 @@ class HomePageState extends State<SearchPage> {
         );
       },
       child: ListTile(
-        leading: Padding(
-          padding: const EdgeInsets.only(top: 50),
-          child: Icon(Icons.person, size: 40, color: Colors.amberAccent),
+        leading: const Padding(
+          padding: EdgeInsets.only(top: 50),
+          child: Icon(Icons.person, size: 40, color: Colors.black),
         ),
         title: Row(
           children: [
@@ -75,13 +75,6 @@ class HomePageState extends State<SearchPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    "\nSelect Passenger            ",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.amberAccent,
-                        fontWeight: FontWeight.w600),
-                  ),
                   SizedBox(
                     height: 200,
                     child: Consumer<ItemViewModel>(
@@ -199,7 +192,6 @@ class HomePageState extends State<SearchPage> {
                         color: Colors.green[100],
                       ),
                       child: SingleChildScrollView(
-
                         child: Form(
                           key: formkey,
                           child: Column(
