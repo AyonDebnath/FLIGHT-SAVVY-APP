@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flight_savvy/main.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
@@ -64,7 +64,7 @@ class controller {
           'infants': '0',
           'travelClass': 'ECONOMY',
           'max': '30',
-          'currencyCode': 'CAD',
+          'currencyCode': MyApp.selectedCurrency,
         };
 
         var url =
