@@ -67,6 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '988598383985',
     projectId: 'fly-savvy',
     storageBucket: 'fly-savvy.appspot.com',
+    androidClientId: '988598383985-5d39uk7lajr0ptcb9grsikm5avjeh3lp.apps.googleusercontent.com',
     iosClientId: '988598383985-br6atjhjbbj08k63m90io9usnkaqmhvr.apps.googleusercontent.com',
     iosBundleId: 'com.example.flightSavvy',
   );
@@ -77,6 +78,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '988598383985',
     projectId: 'fly-savvy',
     storageBucket: 'fly-savvy.appspot.com',
+    androidClientId: '988598383985-5d39uk7lajr0ptcb9grsikm5avjeh3lp.apps.googleusercontent.com',
     iosClientId: '988598383985-qr44jsr1hdp2u5ha6tp5vv0otl72g6sd.apps.googleusercontent.com',
     iosBundleId: 'com.example.flightSavvy.RunnerTests',
   );

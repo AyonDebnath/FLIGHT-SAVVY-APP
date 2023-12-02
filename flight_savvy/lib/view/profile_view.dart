@@ -47,20 +47,12 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Profile'),
         centerTitle: true,
-        backgroundColor: Colors.white,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(1.0),
           child: Container(
-            color: Colors.grey,
+            color: Colors.black,
             height: 1.0,
           ), // Set the preferred size of the underline
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Handle back button press
-            Navigator.of(context).pop();
-          },
         ),
       ),
       body: ListView(

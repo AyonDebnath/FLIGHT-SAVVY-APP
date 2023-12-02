@@ -1,5 +1,7 @@
+import 'package:flight_savvy/view/passengerView.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import '../widgets/passengerList.dart';
 import 'SearchBoxCollapsed.dart';
 import '/controller/controller.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -7,7 +9,6 @@ import 'flightList.dart';
 import 'package:gap/gap.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
-
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 
 class SearchPage extends StatefulWidget {
@@ -23,13 +24,15 @@ class HomePageState extends State<SearchPage> {
   var cont = controller();
   bool doShow = false;
   int SelectVal = 0;
-  List<String> texts = ['One way', 'Two way'];
+  int selectedStops = 0;
+  List<String> texts = ['One way', 'Round trip'];
   DateTime? startDate = DateTime.now();
   DateTime? endDate = DateTime.now();
   String? selectedOption1;
   String? selectedOption2;
   bool isBool = false;
   bool isOneWay = true;
+  bool isNonStop = false;
   var formkey = GlobalKey<FormState>();
 
   /* Future<List<Map<String, dynamic>>> getFlights() async {
@@ -52,6 +55,79 @@ class HomePageState extends State<SearchPage> {
     });
   }
 
+  _selectPassenger(BuildContext context) => TextButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OpenPassengerList(),
+          ),
+        );
+      },
+      child: ListTile(
+        leading: Padding(
+          padding: const EdgeInsets.only(top: 50),
+          child: Icon(Icons.person, size: 40, color: Colors.amberAccent),
+        ),
+        title: Row(
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    "\nSelect Passenger            ",
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.amberAccent,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  SizedBox(
+                    height: 200,
+                    child: Consumer<ItemViewModel>(
+                        builder: (context, item, child) {
+                          return FutureBuilder(
+                              future: item.readPassengerValue(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<dynamic> snapshot) {
+                                if (snapshot.hasData) {
+                                  if (snapshot.data != null) {
+                                    return ListView.separated(
+                                      itemCount: snapshot.data.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        String key =
+                                        snapshot.data.keys.elementAt(index);
+                                        return Text(
+                                          "${snapshot.data[key]} $key ",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w400),
+                                        );
+                                      },
+                                      separatorBuilder:
+                                          (BuildContext context, int index) =>
+                                          Divider(
+                                            color: Colors.amberAccent,
+                                            thickness: 1,
+                                          ),
+                                    );
+                                  } else {
+                                    return CircularProgressIndicator();
+                                  }
+                                } else {
+                                  return CircularProgressIndicator();
+                                }
+                              });
+                        }),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ));
+
   @override
   Widget build(BuildContext context) {
     List<TextEditingController> conts = [
@@ -62,6 +138,7 @@ class HomePageState extends State<SearchPage> {
     ];
 
     Map<String, List<String>>? data = widget.data;
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -84,13 +161,14 @@ class HomePageState extends State<SearchPage> {
                     ),
                   ),
                   Expanded(
-                      child: flightList(isBool, [
+                      child: FlightList(isBool, [
                     selectedOption1,
                     selectedOption2,
                     isOneWay,
                     DateFormat('yyyy-MM-dd').format(startDate!),
                     DateFormat('yyyy-MM-dd').format(endDate!),
-                    1
+                    isNonStop = true,
+                    selectedStops
                   ]))
                 ]
               : [
@@ -121,6 +199,7 @@ class HomePageState extends State<SearchPage> {
                         color: Colors.green[100],
                       ),
                       child: SingleChildScrollView(
+
                         child: Form(
                           key: formkey,
                           child: Column(
@@ -293,6 +372,29 @@ class HomePageState extends State<SearchPage> {
                               ),
                               // Second row
 
+                              // DropdownButton for selecting the number of stops
+                              DropdownButton<bool>(
+                                value: isNonStop,
+                                items: const [
+                                  DropdownMenuItem<bool>(
+                                    value: true,
+                                    child: Text('Non-Stop'),
+                                  ),
+                                  DropdownMenuItem<bool>(
+                                    value: false,
+                                    child: Text('Any number of stops'),
+                                  ),
+                                ],
+                                onChanged: (bool? newValue) {
+                                  setState(() {
+                                    isNonStop = newValue!;
+                                  });
+                                },
+                                hint: const Text('Select Stops'),
+                              ),
+
+
+
                               // Submit Button
                               ElevatedButton(
                                 onPressed: () {
@@ -318,6 +420,7 @@ class HomePageState extends State<SearchPage> {
                                   )
                                 ]),
                               ),
+                              _selectPassenger(context),
                             ],
                           ),
                         ),
