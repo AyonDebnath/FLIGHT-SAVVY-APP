@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="11037686-61b9-4a32-883c-7339a9f7287a" name="Changes" comment="Revert &quot;details_view.dart added&quot;&#10;&#10;This reverts commit 5eb671e4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/details_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/details_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/profile_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/profile_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/controller/controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/controller/controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flight_savvy/lib/view/settings_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flight_savvy/lib/view/settings_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

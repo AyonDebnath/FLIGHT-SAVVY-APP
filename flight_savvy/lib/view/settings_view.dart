@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flight_savvy/main.dart';
-import 'user_info.dart';
-import 'editInfo_view.dart';
+import 'package:flutter/material.dart';
 
 class settings extends StatefulWidget {
   const settings({super.key});
@@ -38,7 +37,6 @@ class _settingsState extends State<settings> {
   }
 }
 
-
 class CardList extends StatefulWidget {
   @override
   State<CardList> createState() => _CardListState();
@@ -46,33 +44,82 @@ class CardList extends StatefulWidget {
 
 class _CardListState extends State<CardList> {
   bool isSwitched = false;
-
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  // List of items for the dropdown
+  List<String> currencies = ['USD', 'CAD'];
+  //
+  // // Selected item
+  // String selectedCurrency = 'CAD';
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+      child: Column(
         children: [
-          Text(
-            'Toggle Switch',
-            style: TextStyle(fontSize: 18),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                'Toggle Switch:',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(width: 70),
+              Switch(
+                value: isSwitched,
+                onChanged: (value) {
+                  setState(() {
+                    MyApp.themeNotifier.value =
+                        MyApp.themeNotifier.value == ThemeMode.light
+                            ? ThemeMode.dark
+                            : ThemeMode.light;
+                    isSwitched = value;
+                  });
+                  // Perform actions based on the switch state
+                  print('Switch is $isSwitched');
+                },
+              ),
+
+            ],
           ),
-          SizedBox(width: 20),
-          Switch(
-            value: isSwitched,
-            onChanged: (value) {
-              setState(() {
-                MyApp.themeNotifier.value = MyApp.themeNotifier.value == ThemeMode.light
-                    ? ThemeMode.dark
-                    : ThemeMode.light;
-                isSwitched = value;
-              });
-              // Perform actions based on the switch state
-              print('Switch is $isSwitched');
-            },
+          SizedBox(height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                'Selected Currency:',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(width: 20),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: DropdownButton<String>(
+                  value: MyApp.selectedCurrency,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      MyApp.selectedCurrency = newValue!;
+                    });
+                  },
+                  items: currencies.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  underline: Container(), // Remove the default underline
+                  icon: Icon(Icons.arrow_drop_down), // Add an arrow icon
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  isExpanded: false, // This property allows the dropdown to take the minimum space needed
+                ),
+              ),
+            ],
           ),
+
+
         ],
       ),
     );
