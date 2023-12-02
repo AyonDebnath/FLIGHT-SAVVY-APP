@@ -14,7 +14,7 @@ class _settingsState extends State<settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text('Settings', style: TextStyle(color: Colors.black),),
         centerTitle: true,
         backgroundColor: Colors.white,
         bottom: PreferredSize(
@@ -26,6 +26,7 @@ class _settingsState extends State<settings> {
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
+          color: Colors.black,
           onPressed: () {
             // Handle back button press
             Navigator.of(context).pop();
@@ -61,10 +62,10 @@ class _CardListState extends State<CardList> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                'Toggle Switch:',
+                'Theme Toggle Switch:',
                 style: TextStyle(fontSize: 18),
               ),
-              SizedBox(width: 70),
+              SizedBox(width: 10),
               Switch(
                 value: isSwitched,
                 onChanged: (value) {
@@ -90,7 +91,7 @@ class _CardListState extends State<CardList> {
                 'Selected Currency:',
                 style: TextStyle(fontSize: 18),
               ),
-              SizedBox(width: 20),
+              SizedBox(width: 30),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 12),
                 decoration: BoxDecoration(
@@ -112,7 +113,7 @@ class _CardListState extends State<CardList> {
                   }).toList(),
                   underline: Container(), // Remove the default underline
                   icon: Icon(Icons.arrow_drop_down), // Add an arrow icon
-                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  style: TextStyle(fontSize: 16, color: Theme.of(context).textTheme.bodyText1?.color ?? Colors.black, ),
                   isExpanded: false, // This property allows the dropdown to take the minimum space needed
                 ),
               ),
