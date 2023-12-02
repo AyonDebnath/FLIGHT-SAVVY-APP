@@ -53,19 +53,41 @@ class _userInfoState extends State<userInfo> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
-                    Center(
-                      child: CircleAvatar(
-                        radius: 60, // Set the radius of the circle
-                        backgroundColor: Colors.grey[300], // Set the background color
+                    Visibility(
+                      visible:
+                          users[i].imageUrl != null && users[i].imageUrl != '',
+                      child: Center(
                         child: CircleAvatar(
-                          radius: 55, // Adjust the radius to control the border thickness
-                          backgroundImage: AssetImage(
-                              'assets/profile_picture.jpg'), // Set your profile picture here
+                          radius: 60,
+                          // Set the radius of the circle
+                          backgroundColor: Colors.grey[300],
+                          // Set the background color
+                          child: CircleAvatar(
+                            radius: 55,
+                            backgroundImage: NetworkImage(users[i].imageUrl!),
+                          ),
                         ),
-                      ),
+                      ), // your widget here,
                     ),
-                    SizedBox(height: 20,),
+                    Visibility(
+                      visible:
+                      users[i].imageUrl == null || users[i].imageUrl == '',
+                      child: Center(
+                        child: CircleAvatar(
+                          radius: 60,
+                          // Set the radius of the circle
+                          backgroundColor: Colors.grey[300],
+                          // Set the background color
+                          child: CircleAvatar(
+                            radius: 55,
+                            backgroundImage: NetworkImage('https://firebasestorage.googleapis.com/v0/b/fly-savvy.appspot.com/o/images%2Fwhite-color-solid-background-1920x1080.png?alt=media&token=31ff20ed-a117-4942-ab87-0adfacef071e'),
+                          ),
+                        ),
+                      ), // your widget here,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Row(
                       children: [
                         Text(
@@ -86,7 +108,6 @@ class _userInfoState extends State<userInfo> {
                         ),
                       ],
                     ),
-
                     Visibility(
                       visible: users[i].Name != null && users[i].Name != '',
                       child: Row(
@@ -110,7 +131,6 @@ class _userInfoState extends State<userInfo> {
                         ],
                       ),
                     ),
-
                     Visibility(
                       visible: users[i].Phone != null && users[i].Phone != '',
                       child: Row(
@@ -134,9 +154,9 @@ class _userInfoState extends State<userInfo> {
                         ],
                       ),
                     ),
-
                     Visibility(
-                      visible: users[i].Address != null && users[i].Address != '',
+                      visible:
+                          users[i].Address != null && users[i].Address != '',
                       child: Row(
                         children: [
                           Text(
@@ -158,7 +178,6 @@ class _userInfoState extends State<userInfo> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               );

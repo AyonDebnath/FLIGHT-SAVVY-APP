@@ -6,8 +6,9 @@ class User {
   String? Name;
   String? Phone;
   String? Address;
+  String? imageUrl;
 
-  User({this.id, required this.username, this.Name, this.Phone, this.Address});
+  User({this.id, required this.username, this.imageUrl, this.Name, this.Phone, this.Address});
 
   static User fromMap(DocumentSnapshot doc) {
     Map<String, dynamic> map = doc.data() as Map<String, dynamic>;
@@ -17,6 +18,7 @@ class User {
       Name: map['Name'] ?? '',
       Phone: map['Phone'] ?? '',
       Address: map['Address'] ?? '',
+      imageUrl: map['imageUrl'] ?? '',
     );
   }
 

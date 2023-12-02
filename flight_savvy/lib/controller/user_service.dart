@@ -52,7 +52,7 @@ class UserService {
 
   Future<String> getImageUrl(String id) async {
     DocumentSnapshot user = await userCollection.doc(id).get();
-    late var imageUrl;
+    late String imageUrl;
     try{
       imageUrl =  user['imageUrl'];
     }

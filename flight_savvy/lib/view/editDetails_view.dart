@@ -25,7 +25,7 @@ class _editDetailsState extends State<editDetails> {
   final currentUser = auth.FirebaseAuth.instance.currentUser;
   final UserService userService = UserService();
   final ImagePicker _picker = ImagePicker();
-  var imageURL;
+  String? imageURL;
   XFile? _image;
 
   Future<void> fetchData() async {
@@ -160,7 +160,7 @@ class _editDetailsState extends State<editDetails> {
                             ),
                           if(_image==null && imageURL!=null && imageURL != '')
                             Image.network(
-                              imageURL,
+                              imageURL!,
                               width: 100.0, // Set the width of the image
                               height: 100.0, // Set the height of the image
                               fit: BoxFit.cover, // Set the BoxFit property as needed

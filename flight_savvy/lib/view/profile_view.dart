@@ -147,8 +147,7 @@ class ProfilePage extends StatelessWidget {
                         children: [
                           Image.asset(
                             'assets/trips.png',
-                            // height: 21, // Set the desired height
-                            width: 90, // Set the desired width
+                            width: 90,
                           ),
                           SizedBox(
                             height: 5,
