@@ -17,7 +17,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   static final ValueNotifier<ThemeMode> themeNotifier =
       ValueNotifier(ThemeMode.light);
-
+  static String selectedCurrency = 'CAD';
   const MyApp({super.key});
 
   @override
