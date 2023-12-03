@@ -282,7 +282,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     Image.asset(
                       'assets/traveller.png',
-                      width: 61, // Set the desired width
+                      width: 56, // Set the desired width
                     ),
                   ],
                 ),
@@ -311,7 +311,7 @@ class ProfilePage extends StatelessWidget {
                     Image.asset(
                       'assets/sustainable.png',
                       // height: 21, // Set the desired height
-                      width: 65, // Set the desired width
+                      width: 60, // Set the desired width
                     ),
                     SizedBox(
                       width: 11,

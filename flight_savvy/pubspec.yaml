@@ -121,4 +121,5 @@ flutter:
     - lib/assets/airpots.csv
     - lib/assets/airplane background.png
     - lib/assets/floght_logo.png
+    - assets/welcome_guest.png
 

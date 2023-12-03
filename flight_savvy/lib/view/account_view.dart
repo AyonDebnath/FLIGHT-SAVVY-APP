@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flight_savvy/view/signup_view.dart';
 import 'package:flutter/material.dart';
 
 import 'editDetails_view.dart';
@@ -13,29 +14,76 @@ class account extends StatefulWidget {
 }
 
 class _accountState extends State<account> {
+  final _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
+    final isGuest = _auth.currentUser?.isAnonymous ?? true;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your details'),
+        title: Text('Your details', style: TextStyle(color: Colors.black)),
         centerTitle: true,
         backgroundColor: Colors.white,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1.0),
-          child: Container(
-            color: Colors.grey,
-            height: 1.0,
-          ), // Set the preferred size of the underline
-        ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Handle back button press
-            Navigator.of(context).pop();
-          },
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: CardList(),
+      body: isGuest ? _buildGuestContent(context) : CardList(),
+    );
+  }
+
+  Widget _buildGuestContent(BuildContext context) {
+    return SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                'assets/welcome_guest.png',
+                width: MediaQuery.of(context).size.width * 0.6,
+              ),
+              SizedBox(height: 30),
+              Text(
+                'Welcome, Guest!',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
+              SizedBox(height: 15),
+              Text(
+                'Log in or sign up to view your account details and manage your bookings.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
+              SizedBox(height: 30),
+              _buildButton(context, () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginView())), 'Login', Colors.teal, Colors.white),
+              SizedBox(height: 10),
+              _buildButton(context, () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignupView())), 'Sign Up', Colors.orange, Colors.white),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildButton(BuildContext context, VoidCallback onPressed, String label, Color backgroundColor, Color textColor) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        foregroundColor: textColor, backgroundColor: backgroundColor,
+        minimumSize: Size(double.infinity, 50),
+      ),
+      onPressed: onPressed,
+      child: Text(label),
     );
   }
 }
