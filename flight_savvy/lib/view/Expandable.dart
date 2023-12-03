@@ -1,5 +1,5 @@
 import 'package:flight_savvy/controller/controller.dart';
-import 'package:flight_savvy/view/details_view.dart';
+
 import 'package:flight_savvy/view/flightCard.dart';
 
 import 'package:flight_savvy/widgets/thick_container.dart';
