@@ -118,10 +118,19 @@ class controller {
     // Read the CSV file
     var file = await assets.loadString(filePath);
 
-    CsvToListConverter().convert(file).forEach((e) {
-      airports.putIfAbsent(
-          e[0].toString(), () => [e[1].toString(), e[2].toString()]);
-    });
+    List<String> listSplit = file.split('\n');
+    print('done1');
+    List<List<String>> listF = listSplit.map((e) => e.split(',')).toList();
+    print('done2');
+    for (int i = 0; i < listF.length; i++) {
+      var e = listF[i];
+
+      if (i == 8882) {
+        break;
+      }
+      await airports.putIfAbsent(e[0], () => [e[1], e[2]]);
+    }
+
 
     return airports;
   }

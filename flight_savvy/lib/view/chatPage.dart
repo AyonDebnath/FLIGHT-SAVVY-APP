@@ -12,68 +12,68 @@ class chatPage extends StatefulWidget {
   chatPage(this.username);
 
   @override
-  State<chatPage> createState() => chatState();
+  State<chatPage> createState() => _ChatPageState();
 }
 
-class chatState extends State<chatPage> {
+class _ChatPageState extends State<chatPage> {
   @override
   Widget build(BuildContext context) {
-    final Scale = (MediaQuery.of(context).size.height) / 838.4;
-    return Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(colors: [
-        Colors.black,
-        Color.fromARGB(255, 114, 114, 114),
-        Color.fromARGB(70, 7, 7, 7)
-      ])),
-      child: ListView(
-        children: [
-          Gap(30 * Scale),
-          Container(
-            alignment: Alignment.topLeft,
-            child: StrokeText(
-              strokeWidth: 4.0,
-              text: 'Hi,\n${widget.username}!',
-              textStyle: TextStyle(
-                  fontFamily: 'OverpassM',
-                  fontSize: 70 * Scale,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w200),
-            ),
-          ),
-          Gap(20 * Scale),
-          Center(
-            child: StrokeText(
-              text: 'Welcome to flySavvy',
-              strokeWidth: 2.0,
-              textStyle: TextStyle(
-                fontFamily: 'OverpassM',
-                fontSize: 32 * Scale,
+    final scale = MediaQuery.of(context).size.height / 838.4;
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.0 * scale),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Gap(30 * scale),
+              Text(
+                'Hi,\n${widget.username}!',
+                style: TextStyle(
+                  fontSize: 70 * scale,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueGrey[800],
+                ),
               ),
-            ),
-          ),
-          Gap(20 * Scale),
-          Padding(
-            padding: EdgeInsets.all(8.0 * Scale),
-            child: Container(
-              width: 340 * Scale,
-              height: 400 * Scale,
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFF273238), // Darker shade of grey
-                      Color(0xFF455A64), // Slightly lighter shade of grey
-                    ],
+              Gap(20 * scale),
+              Center(
+                child: Text(
+                  'Welcome to FlySavvy',
+                  style: TextStyle(
+                    fontSize: 32 * scale,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.blueGrey[600],
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(25))),
-              child: Center(
-                child: chatWidget(),
+                ),
               ),
-            ),
+              Gap(20 * scale),
+              Expanded(
+                child: Center(
+                  child: Container(
+                    width: 340 * scale,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(25),
+                      child: chatWidget(),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
