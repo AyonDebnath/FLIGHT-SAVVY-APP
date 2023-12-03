@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Expandable extends StatelessWidget {
+class Expandables extends StatelessWidget {
   final String airline;
   final String flightNumber;
   final String departure;
@@ -12,7 +12,7 @@ class Expandable extends StatelessWidget {
   final List<dynamic> segments;
 
 
-  Expandable({
+  Expandables({
     required this.airline,
     required this.duration,
     required this.flightNumber,
