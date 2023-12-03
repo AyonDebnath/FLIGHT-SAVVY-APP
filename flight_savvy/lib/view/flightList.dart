@@ -1,7 +1,9 @@
+import 'package:flight_savvy/view/Expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import '../controller/controller.dart';
 import 'flightCard.dart';
-import 'flightCardExpandable.dart';
+
 import 'package:animations/animations.dart';
 import 'package:flight_savvy/controller/controller.dart';
 
@@ -21,8 +23,9 @@ class FlightList extends StatefulWidget {
 class _FlightListState extends State<FlightList> {
   FlightSort selectedSort = FlightSort.best; // Default sorting option
 
-  Future<List<List<dynamic>>> getSortedFlights(FlightSort sortOption) async {
-    List<List<dynamic>> flights = await widget.cont.getDate(
+  Future<List<List<List<dynamic>>>> getSortedFlights(
+      FlightSort sortOption) async {
+    List<List<List<dynamic>>> flights = await widget.cont.getDate(
       widget.vals[0],
       widget.vals[1],
       widget.vals[2],
@@ -30,17 +33,17 @@ class _FlightListState extends State<FlightList> {
       widget.vals[4],
       widget.vals[5],
     );
-    // print(widget.vals[5]);
 
     switch (sortOption) {
       case FlightSort.best:
-        flights.sort((a, b) => a[4].compareTo(b[4])); // Sort by arrivalTime
+        flights
+            .sort((a, b) => a[0][4].compareTo(b[0][4])); // Sort by arrivalTime
         break;
       case FlightSort.fastest:
-        flights.sort((a, b) => a[0].compareTo(b[0])); // Sort by duration
+        flights.sort((a, b) => a[0][0].compareTo(b[0][0])); // Sort by duration
         break;
       case FlightSort.cheapest:
-        flights.sort((a, b) => a[6].compareTo(b[6])); // Sort by price
+        flights.sort((a, b) => a[0][6].compareTo(b[0][6])); // Sort by price
         break;
     }
 
@@ -72,7 +75,7 @@ class _FlightListState extends State<FlightList> {
       );
     } else {
       return Scaffold(
-        body: FutureBuilder<List<List<dynamic>>>(
+        body: FutureBuilder<List<List<List<dynamic>>>>(
           future: getSortedFlights(selectedSort),
           builder: (context, snapshot) {
             if (!snapshot.hasData || snapshot.data == null) {
@@ -87,7 +90,7 @@ class _FlightListState extends State<FlightList> {
               );
             }
 
-            List<List<dynamic>>? data = snapshot.data;
+            List<List<List<dynamic>>>? data = snapshot.data;
 
             return Column(
               children: [
@@ -119,12 +122,50 @@ class _FlightListState extends State<FlightList> {
                   child: ListView.builder(
                     itemCount: data!.length,
                     itemBuilder: (context, index) {
-                      var flight_instance = data[index];
-
+                      var flight_instance = data[index][0];
+                      var flight_instance2 = null;
+                      if (widget.vals[2] == false) {
+                        flight_instance2 = data[index][1];
+                      }
+                      //print(flight_instance.last);
                       return OpenContainer(
                         closedBuilder: (BuildContext context, VoidCallback _) {
-                          return Center(
-                            child: FlightCard(
+                          return Container(
+                            height: widget.vals[2] == false ? 235 : 135,
+                            child: Column(children: [
+                              Center(
+                                child: FlightCard([
+                                  flight_instance[0],
+                                  flight_instance[6],
+                                  'Lufthansa',
+                                  flight_instance[4],
+                                  '202131',
+                                  flight_instance[1].toString(),
+                                  flight_instance[3].toString(),
+                                  flight_instance[2],
+                                ]),
+                              ),
+                              widget.vals[2] == true
+                                  ? const Gap(0)
+                                  : Center(
+                                      child: flightCardRet([
+                                        flight_instance2[0],
+                                        flight_instance2[6],
+                                        'Lufthansa',
+                                        flight_instance2[4],
+                                        '202131',
+                                        flight_instance2[1].toString(),
+                                        flight_instance2[3].toString(),
+                                        flight_instance2[2],
+                                      ]),
+                                    ),
+                            ]),
+                          );
+                        },
+                        openBuilder:
+                            (BuildContext context, VoidCallback openContainer) {
+                          //print(flight_instance);
+                          return Expandable(
                               duration: flight_instance[0],
                               price: flight_instance[6],
                               airline: 'Lufthansa',
@@ -133,22 +174,8 @@ class _FlightListState extends State<FlightList> {
                               departure: flight_instance[1].toString(),
                               destination: flight_instance[3].toString(),
                               departureTime: flight_instance[2],
-                            ),
-                          );
-                        },
-                        openBuilder: (BuildContext context, VoidCallback openContainer) {
-                          return Expandable (
-                            duration: flight_instance[0],
-                            price: flight_instance[6],
-                            airline: 'Lufthansa',
-                            arrivalTime: flight_instance[4],
-                            flightNumber: '202131',
-                            departure: flight_instance[1].toString(),
-                            destination: flight_instance[3].toString(),
-                            departureTime: flight_instance[2],
-                            segments: flight_instance.last.map((element) => [element]).toList(),
-                          );
-                          (onPressed: openContainer);
+                              segments: flight_instance.last,isOneway: widget.vals[2])
+                              ;
                         },
                       );
                     },

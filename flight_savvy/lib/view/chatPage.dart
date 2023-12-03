@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flight_savvy/view/chatwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
@@ -13,8 +14,10 @@ class chatPage extends StatefulWidget {
 }
 
 class chatState extends State<chatPage> {
+  
   @override
   Widget build(BuildContext context) {
+    final Scale = (MediaQuery.of(context).size.height) / 838.4;
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
@@ -22,48 +25,53 @@ class chatState extends State<chatPage> {
         Color.fromARGB(255, 114, 114, 114),
         Color.fromARGB(70, 7, 7, 7)
       ])),
-      child: Column(
+      child: ListView(
         children: [
-          const Gap(70),
-          Center(
+           Gap(30*Scale),
+          Container(
+            alignment: Alignment.topLeft,
             child: StrokeText(
-              strokeWidth: 2.0,
+              strokeWidth: 4.0,
               text: 'Hi,\n${widget.username}!',
-              textStyle: const TextStyle(
+              textStyle:  TextStyle(
                   fontFamily: 'OverpassM',
-                  fontSize: 100,
+                  fontSize: 70*Scale,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w200),
             ),
           ),
-          const Gap(20),
-          const Center(
+           Gap(20*Scale),
+           Center(
             child: StrokeText(
               text: 'Welcome to flySavvy',
               strokeWidth: 2.0,
               textStyle: TextStyle(
                 fontFamily: 'OverpassM',
-                fontSize: 32,
+                fontSize: 32*Scale,
               ),
             ),
           ),
-          const Gap(20),
-          Container(
-            width: 340,
-            height: 300,
-            decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 76, 20, 86),
-                borderRadius: BorderRadius.all(Radius.circular(25))),
-            child: const Center(
-              child: Text(
-                "Travel suggestion chatbot! To be implemented",
-                style: TextStyle(color: Colors.cyanAccent),
+           Gap(20*Scale),
+          Padding(
+            padding:  EdgeInsets.all(8.0 * Scale),
+            child: Container(
+              width: 340 * Scale,
+              height: 400 * Scale,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF273238), // Darker shade of grey
+                      Color(0xFF455A64), // Slightly lighter shade of grey
+                    ],
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(25))),
+              child: Center(
+                child: chatWidget(),
               ),
             ),
           ),
-          Expanded(
-            child: Container(),
-          )
         ],
       ),
     );
