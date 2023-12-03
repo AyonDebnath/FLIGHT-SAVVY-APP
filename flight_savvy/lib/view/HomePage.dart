@@ -48,9 +48,9 @@ class HomeState extends State<HomePage> {
               backgroundColor: Colors.lightBlueAccent,
               animationDuration: const Duration(milliseconds: 350),
               items: const <Widget>[
-                Icon(Icons.home, size: 30),
-                Icon(Icons.search, size: 30),
-                Icon(Icons.person, size: 30),
+                Icon(Icons.home, size: 30, color: Colors.black),
+                Icon(Icons.search, size: 30, color: Colors.black),
+                Icon(Icons.person, size: 30, color: Colors.black),
               ],
               onTap: (index) {
                 setState(() {

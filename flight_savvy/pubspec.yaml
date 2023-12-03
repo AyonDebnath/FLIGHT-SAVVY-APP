@@ -49,6 +49,7 @@ dependencies:
   firebase_storage: ^11.2.8
   provider: ^6.1.1
   get_it: ^7.6.4
+  image_picker: any
  
 
 
@@ -122,4 +123,5 @@ flutter:
     - lib/assets/airpots.csv
     - lib/assets/airplane background.png
     - lib/assets/floght_logo.png
+    - assets/welcome_guest.png
 
