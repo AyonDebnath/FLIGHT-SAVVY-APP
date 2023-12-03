@@ -344,14 +344,7 @@ class ProfilePage extends StatelessWidget {
                   // Handle "Your details" press
                   Navigator.of(context).push(
                       MaterialPageRoute(
-                      builder: (context) => const SustainabilityDetails(
-                        title: 'Sustainability',
-                        text: 'Our Steps Toward Sustainability.\n'
-                      'Helping every traveler explore our world effortlessly, for generations to come.\n'
-
-                  'We are committed to helping shape a more responsible future for travel in collaboration with our partners.'
-
-                      )
+                      builder: (context) =>  sustainability()
                       )
                   );
                 },
