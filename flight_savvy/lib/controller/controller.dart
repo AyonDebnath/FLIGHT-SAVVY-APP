@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:csv/csv.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class controller {
   var Client = http.Client();
@@ -37,13 +38,17 @@ class controller {
     }
   }
 
-  Future<List<List<dynamic>>> getDate(String origin, String destination,
+  Future<void> RedirectSkyScanner(String Url) async {
+    final Uri url = Uri.parse(Url);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
+  Future<List<List<List<dynamic>>>> getDate(String origin, String destination,
       bool isOneway, String leave, String retur, bool isNonStop) async {
     int count = 0;
-    print(origin);
-    print(destination);
-    print(leave);
-    print(retur);
+
     int stops = 0;
     bool isNonStop = false;
 
@@ -63,7 +68,7 @@ class controller {
           'children': '0',
           'infants': '0',
           'travelClass': 'ECONOMY',
-          'max': '30',
+          'max': '4',
           'currencyCode': MyApp.selectedCurrency,
         };
 
@@ -81,31 +86,23 @@ class controller {
         int stopsCount = 0;
 
         // Filter flights based on the number of stops
-        List<Map<String, dynamic>> filteredFlights =
-        allFlight.where((flight) {
+        List<Map<String, dynamic>> filteredFlights = allFlight.where((flight) {
           List<dynamic> segments = flight['itineraries'][0]['segments'];
-          print(segments);
+
           stopsCount = segments.length - 1;
-          print(stopsCount);
-          // print(stopsCount == stops);
 
           return stopsCount == stops;
         }).toList();
-
-        print(isNonStop);
-
+       // print(isNonStop);
         if (isNonStop == true) {
-          var extracted = await extractFlightData(filteredFlights);
-          print(extracted);
+          var extracted = await extractFlightData(filteredFlights, isOneway);
+
+          return extracted;
+        } else {
+          var extracted = await extractFlightData(allFlight, isOneway);
+          print(extracted.length);
           return extracted;
         }
-        else {
-          var extracted = await extractFlightData(allFlight);
-          print(extracted);
-          return extracted;
-        }
-
-
       } catch (e) {
         await setToken();
         count++;
@@ -142,9 +139,12 @@ Future<List<Map<String, dynamic>>> toMap(List<dynamic> vals) async {
   return mapList;
 }
 
-List<List<dynamic>> extractFlightData(List<Map<String, dynamic>> jsonData) {
-  List<List<dynamic>> result = [];
+List<List<List<dynamic>>> extractFlightData(
+    List<Map<String, dynamic>> jsonData, bool isoneway) {
+  List<List<List<dynamic>>> result = [];
+
   for (int i = 0; i < jsonData.length; i++) {
+    List<List<dynamic>> tempRes = [];
     try {
       Map<String, dynamic> flightData = jsonData[i];
       Map<String, dynamic> firstItinerary = flightData['itineraries'][0];
@@ -153,7 +153,27 @@ List<List<dynamic>> extractFlightData(List<Map<String, dynamic>> jsonData) {
       Map<String, dynamic> lastSegment = segments.last;
       Map<String, dynamic> price = flightData['price'];
 
-      result.add([
+      var SegList = [];
+      for (Map<String, dynamic> segment in segments) {
+        Map<String, dynamic> departure = segment['departure'];
+        Map<String, dynamic> arrival = segment['arrival'];
+        Map<String, dynamic> aircraft = segment['aircraft'];
+
+        SegList.add([
+          departure['iataCode'],
+          departure['at'],
+          arrival['iataCode'],
+          arrival['at'],
+          segment['duration'],
+          // Arrival Airport IATA code
+          // Arrival Airport Name
+          // Departure Airport Name
+          segment['carrierCode'], // Carrier Code
+          aircraft['code'], // Aircraft Code
+          segment['number'], // Aircraft Number
+        ]);
+      }
+      tempRes.add([
         firstItinerary['duration'],
         firstSegment['departure']['iataCode'],
         firstSegment['departure']['at'],
@@ -161,25 +181,50 @@ List<List<dynamic>> extractFlightData(List<Map<String, dynamic>> jsonData) {
         lastSegment['arrival']['at'],
         price['currency'],
         price['total'],
-        segments.length,
-        []
+        SegList
       ]);
-      for (Map<String, dynamic> segment in segments) {
-        Map<String, dynamic> departure = segment['departure'];
-        Map<String, dynamic> arrival = segment['arrival'];
-        Map<String, dynamic> aircraft = segment['aircraft'];
 
-        result.last[8].add([
-          departure['iataCode'],
-          departure['at'],
-          arrival['iataCode'],
-          arrival['at'],
-          segment['duration'],
-          segment['carrierCode'], // Carrier Code
-          aircraft['code'], // Aircraft Code
-          segment['number'], // Aircraft Number
-        ]);
+      if (isoneway == false) {
+        var SegList2 = [];
+        Map<String, dynamic> flightData2 = jsonData[i];
+        Map<String, dynamic> firstItinerary2 = flightData2['itineraries'][1];
+        List<dynamic> segments2 = firstItinerary2['segments'];
+        Map<String, dynamic> firstSegment2 = segments2[0];
+        Map<String, dynamic> lastSegment2 = segments2.last;
+        Map<String, dynamic> price2 = flightData2['price'];
+
+        for (Map<String, dynamic> segment in segments2) {
+          Map<String, dynamic> departure2 = segment['departure'];
+          Map<String, dynamic> arrival2 = segment['arrival'];
+          Map<String, dynamic> aircraft2 = segment['aircraft'];
+
+          SegList2.add([
+            departure2['iataCode'],
+            departure2['at'],
+            arrival2['iataCode'],
+            arrival2['at'],
+            segment['duration'],
+            // Arrival Airport IATA code
+            // Arrival Airport Name
+            // Departure Airport Name
+            segment['carrierCode'], // Carrier Code
+            aircraft2['code'], // Aircraft Code
+            segment['number'], // Aircraft Number
+          ]);
+
+          tempRes.add([
+            firstItinerary2['duration'],
+            firstSegment2['departure']['iataCode'],
+            firstSegment2['departure']['at'],
+            lastSegment2['arrival']['iataCode'],
+            lastSegment2['arrival']['at'],
+            price2['currency'],
+            price2['total'],
+            segments2
+          ]);
+        }
       }
+      result.add(tempRes);
     } catch (e) {
       print('Error extracting flight data: $e');
     }

@@ -49,8 +49,7 @@ dependencies:
   firebase_storage: ^11.2.8
   provider: ^6.1.1
   get_it: ^7.6.4
-  url_launcher: ^6.0.12
-  image_picker: ^1.0.4
+ 
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -64,6 +63,8 @@ dependencies:
   animated_toggle_switch: ^0.8.0
   curved_navigation_bar: ^1.0.3
   stroke_text: ^0.0.2
+  dart_openai: ^5.0.0
+  url_launcher: ^6.2.1
 
 
 

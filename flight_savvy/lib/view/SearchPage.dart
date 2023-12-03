@@ -65,8 +65,8 @@ class HomePageState extends State<SearchPage> {
         );
       },
       child: ListTile(
-        leading: Padding(
-          padding: const EdgeInsets.only(top: 50),
+        leading: Container(
+          height: 30,
           child: Icon(Icons.person, size: 40, color: Colors.amberAccent),
         ),
         title: Row(
@@ -83,43 +83,43 @@ class HomePageState extends State<SearchPage> {
                         fontWeight: FontWeight.w600),
                   ),
                   SizedBox(
-                    height: 200,
+                    height: 10,
                     child: Consumer<ItemViewModel>(
                         builder: (context, item, child) {
-                          return FutureBuilder(
-                              future: item.readPassengerValue(),
-                              builder: (BuildContext context,
-                                  AsyncSnapshot<dynamic> snapshot) {
-                                if (snapshot.hasData) {
-                                  if (snapshot.data != null) {
-                                    return ListView.separated(
-                                      itemCount: snapshot.data.length,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        String key =
+                      return FutureBuilder(
+                          future: item.readPassengerValue(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<dynamic> snapshot) {
+                            if (snapshot.hasData) {
+                              if (snapshot.data != null) {
+                                return ListView.separated(
+                                  itemCount: snapshot.data.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    String key =
                                         snapshot.data.keys.elementAt(index);
-                                        return Text(
-                                          "${snapshot.data[key]} $key ",
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w400),
-                                        );
-                                      },
-                                      separatorBuilder:
-                                          (BuildContext context, int index) =>
-                                          Divider(
-                                            color: Colors.amberAccent,
-                                            thickness: 1,
-                                          ),
+                                    return Text(
+                                      "${snapshot.data[key]} $key ",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w400),
                                     );
-                                  } else {
-                                    return CircularProgressIndicator();
-                                  }
-                                } else {
-                                  return CircularProgressIndicator();
-                                }
-                              });
-                        }),
+                                  },
+                                  separatorBuilder:
+                                      (BuildContext context, int index) =>
+                                          Divider(
+                                    color: Colors.amberAccent,
+                                    thickness: 1,
+                                  ),
+                                );
+                              } else {
+                                return CircularProgressIndicator();
+                              }
+                            } else {
+                              return CircularProgressIndicator();
+                            }
+                          });
+                    }),
                   ),
                 ],
               ),
@@ -180,7 +180,10 @@ class HomePageState extends State<SearchPage> {
                       current: SelectVal,
                       values: [0, 1],
                       indicatorSize: const Size.fromWidth(100),
-                      onChanged: (i) => setState(() => SelectVal = i),
+                      onChanged: (i) => setState(() {
+                        isOneWay = !isOneWay;
+                        SelectVal = i;
+                      }),
                       iconBuilder: (SelectVal, bool) {
                         return Text(texts[SelectVal]);
                       },
@@ -191,7 +194,7 @@ class HomePageState extends State<SearchPage> {
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
                       padding: const EdgeInsets.all(10),
-                      height: 300,
+                      height: 450,
                       width: 500,
                       decoration: BoxDecoration(
                         borderRadius:
@@ -199,7 +202,6 @@ class HomePageState extends State<SearchPage> {
                         color: Colors.green[100],
                       ),
                       child: SingleChildScrollView(
-
                         child: Form(
                           key: formkey,
                           child: Column(
@@ -208,10 +210,9 @@ class HomePageState extends State<SearchPage> {
                               TypeAheadFormField<String>(
                                 validator: (value) {
                                   if (startDate == null || value!.isEmpty) {
-                                    print(value);
                                     return 'Please Enter departure airport';
                                   }
-                                  print(value);
+
                                   return null;
                                 },
                                 textFieldConfiguration: TextFieldConfiguration(
@@ -238,7 +239,7 @@ class HomePageState extends State<SearchPage> {
                                 itemBuilder: (context, suggestion) {
                                   return ListTile(
                                     title: Text(
-                                        '$suggestion${data?[suggestion]?.elementAt(0)}${data![suggestion]?.elementAt(1)}'),
+                                        '${data?[suggestion]?.elementAt(0)}(${data![suggestion]?.elementAt(1)}-$suggestion)'),
                                   );
                                 },
                                 onSuggestionSelected: (suggestion) {
@@ -279,7 +280,7 @@ class HomePageState extends State<SearchPage> {
                                 itemBuilder: (context, suggestion) {
                                   return ListTile(
                                     title: Text(
-                                        '$suggestion${data?[suggestion]?.elementAt(0)}${data![suggestion]?.elementAt(1)}'),
+                                        '${data?[suggestion]?.elementAt(0)}(${data![suggestion]?.elementAt(1)}-$suggestion)'),
                                   );
                                 },
                                 onSuggestionSelected: (suggestion) {
@@ -301,10 +302,9 @@ class HomePageState extends State<SearchPage> {
                                         controller: conts[2],
                                         validator: (value) {
                                           if (startDate == null) {
-                                            print(startDate);
                                             return 'Required departure date';
                                           }
-                                          print(startDate);
+
                                           return null;
                                         },
                                         decoration: const InputDecoration(
@@ -393,13 +393,10 @@ class HomePageState extends State<SearchPage> {
                                 hint: const Text('Select Stops'),
                               ),
 
-
-
                               // Submit Button
                               ElevatedButton(
                                 onPressed: () {
                                   if (formkey.currentState!.validate()) {
-                                    print("validated");
                                     return getData();
                                   }
                                 },
@@ -407,7 +404,7 @@ class HomePageState extends State<SearchPage> {
                                     backgroundColor: MaterialStatePropertyAll(
                                         Colors.blueAccent),
                                     fixedSize: MaterialStatePropertyAll(
-                                        Size.fromWidth(116))),
+                                        Size.fromWidth(127))),
                                 child: const Row(children: [
                                   Icon(
                                     Icons.search_rounded,
