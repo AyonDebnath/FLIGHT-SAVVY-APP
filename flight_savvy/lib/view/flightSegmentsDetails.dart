@@ -1,13 +1,11 @@
 import 'package:flight_savvy/controller/controller.dart';
-
 import 'package:flight_savvy/view/flightCard.dart';
-
 import 'package:flight_savvy/widgets/thick_container.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 
-class Expandable extends StatelessWidget {
+class flightSegmentDetails extends StatelessWidget {
   final String airline;
   final String flightNumber;
   final String departure;
@@ -19,17 +17,17 @@ class Expandable extends StatelessWidget {
   final List<dynamic> segments;
   final bool isOneway;
 
-  Expandable(
+  flightSegmentDetails(
       {required this.airline,
-      required this.duration,
-      required this.flightNumber,
-      required this.departure,
-      required this.destination,
-      required this.departureTime,
-      required this.arrivalTime,
-      required this.price,
-      required this.segments,
-      required this.isOneway});
+        required this.duration,
+        required this.flightNumber,
+        required this.departure,
+        required this.destination,
+        required this.departureTime,
+        required this.arrivalTime,
+        required this.price,
+        required this.segments,
+        required this.isOneway});
 
   final isColor = false;
 
@@ -96,9 +94,9 @@ class Expandable extends StatelessWidget {
                 } else {
                   // Calculate layover time
                   DateTime currentSegmentArrivalTime =
-                      DateTime.parse(segments[index][3]);
+                  DateTime.parse(segments[index][3]);
                   DateTime nextSegmentDepartureTime =
-                      DateTime.parse(segments[index + 1][1]);
+                  DateTime.parse(segments[index + 1][1]);
                   Duration layoverDuration = nextSegmentDepartureTime
                       .difference(currentSegmentArrivalTime);
                   String layoverTime =
@@ -232,7 +230,7 @@ class Expandable extends StatelessWidget {
                 },
                 child: Container(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: Colors.white),

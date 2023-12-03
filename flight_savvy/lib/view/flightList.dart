@@ -1,9 +1,8 @@
-import 'package:flight_savvy/view/Expandable.dart';
+import 'package:flight_savvy/view/flightSegmentsDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../controller/controller.dart';
 import 'flightCard.dart';
-
 import 'package:animations/animations.dart';
 import 'package:flight_savvy/controller/controller.dart';
 
@@ -165,7 +164,7 @@ class _FlightListState extends State<FlightList> {
                         openBuilder:
                             (BuildContext context, VoidCallback openContainer) {
                           //print(flight_instance);
-                          return Expandable(
+                          return flightSegmentDetails(
                               duration: flight_instance[0],
                               price: flight_instance[6],
                               airline: 'Lufthansa',
