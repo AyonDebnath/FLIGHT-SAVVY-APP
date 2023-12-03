@@ -10,19 +10,19 @@ class Expandables extends StatelessWidget {
   final String price;
   final String duration;
   final List<dynamic> segments;
+  List<dynamic>? segments2;
 
-
-  Expandables({
-    required this.airline,
-    required this.duration,
-    required this.flightNumber,
-    required this.departure,
-    required this.destination,
-    required this.departureTime,
-    required this.arrivalTime,
-    required this.price,
-    required this.segments
-  });
+  Expandables(
+    segments2,
+      {required this.airline,
+      required this.duration,
+      required this.flightNumber,
+      required this.departure,
+      required this.destination,
+      required this.departureTime,
+      required this.arrivalTime,
+      required this.price,
+      required this.segments});
 
   String _getSegmentFlights() {
     List<String> details = [];
@@ -35,7 +35,6 @@ class Expandables extends StatelessWidget {
     print(details[0]);
     return details.join(''); // Join the list elements into a single string
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +66,10 @@ class Expandables extends StatelessWidget {
             children: [
               Text(
                 'Flight Details',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
               Icon(
                 Icons.local_atm,
@@ -77,14 +79,16 @@ class Expandables extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           FlightDetailItem(label: 'Flights', value: _getSegmentFlights()),
-
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
                 'CAD $price',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             ],
           ),
@@ -107,7 +111,8 @@ class FlightDetailItem extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white70),
+          style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white70),
         ),
         Column(
           children: [
@@ -122,6 +127,3 @@ class FlightDetailItem extends StatelessWidget {
     );
   }
 }
-
-
-

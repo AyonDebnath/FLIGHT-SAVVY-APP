@@ -229,7 +229,7 @@ List<List<List<dynamic>>> extractFlightData(
             lastSegment2['arrival']['at'],
             price2['currency'],
             price2['total'],
-            segments2
+            SegList2
           ]);
         }
       }

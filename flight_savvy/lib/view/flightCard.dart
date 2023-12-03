@@ -133,7 +133,7 @@ class FlightCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        width: 100,
+                        width: 90,
                         child: Text(
                           '${DateFormat('jm').format(DateTime.parse(departureTime))}',
                           style: isColor == null
@@ -142,15 +142,18 @@ class FlightCard extends StatelessWidget {
                               : Styles.headLineStyle4,
                         ),
                       ),
-                      Text(
-                        duration.substring(2),
-                        style: isColor == null
-                            ? Styles.headLineStyle3
-                                .copyWith(color: Colors.white)
-                            : Styles.headLineStyle3,
+                      SizedBox(
+                        width: 90,
+                        child: Text(
+                          duration.substring(2),
+                          style: isColor == null
+                              ? Styles.headLineStyle3
+                                  .copyWith(color: Colors.white)
+                              : Styles.headLineStyle3,
+                        ),
                       ),
                       SizedBox(
-                        width: 100,
+                        width: 90,
                         child: Text(
                           '${DateFormat('jm').format(DateTime.parse(arrivalTime))}',
                           textAlign: TextAlign.end,
