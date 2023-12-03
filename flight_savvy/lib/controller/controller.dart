@@ -15,7 +15,7 @@ class controller {
     const clientId = 'iC4C1tpTShbup95uODppQ9GhrGIgkyJR';
     const clientSecret = '7YOrHgCDAAzEGvrk';
     final url =
-    Uri.parse('https://test.api.amadeus.com/v1/security/oauth2/token');
+        Uri.parse('https://test.api.amadeus.com/v1/security/oauth2/token');
 
     final response = await Client.post(
       url,
@@ -49,7 +49,7 @@ class controller {
     int count = 0;
 
     int stops = 0;
-    bool isNonStop = false;
+    print('isNONSTOP : $isNonStop');
 
     if (isOneway == true) {
       retur = '';
@@ -59,8 +59,8 @@ class controller {
         var headers = {'authorization': 'Bearer $access_token'};
 
         var params = {
-          'originLocationCode': '$origin',
-          'destinationLocationCode': '$destination',
+          'originLocationCode': '${origin.substring(0, 3)}',
+          'destinationLocationCode': '${destination.substring(0, 3)}',
           'departureDate': '$leave',
           'returnDate': '$retur',
           'adults': '1',
@@ -69,15 +69,16 @@ class controller {
           'travelClass': 'ECONOMY',
           'max': '4',
           'currencyCode': MyApp.selectedCurrency,
+          'nonStop': '$isNonStop'
         };
 
         var url =
-        Uri.parse('https://test.api.amadeus.com/v2/shopping/flight-offers')
-            .replace(queryParameters: params);
+            Uri.parse('https://test.api.amadeus.com/v2/shopping/flight-offers')
+                .replace(queryParameters: params);
         var res = await Client.get(url, headers: headers);
         if (res.statusCode != 200) {
           throw Exception(
-              'http.post error: statusCode=${res.statusCode} ${res.reasonPhrase}');
+              'http.post error: statusCode=$res ${res.reasonPhrase}');
         }
         var res2 = json.decode(res.body) as Map<String, dynamic>;
         List<Map<String, dynamic>> allFlight = await toMap(await res2["data"]);
@@ -102,7 +103,8 @@ class controller {
           print(extracted.length);
           return extracted;
         }
-      } catch (e) {
+      } catch (e, stacktrace) {
+        //print('$e,$stacktrace');
         await setToken();
         count++;
       }
@@ -129,7 +131,6 @@ class controller {
       }
       await airports.putIfAbsent(e[0], () => [e[1], e[2]]);
     }
-
 
     return airports;
   }

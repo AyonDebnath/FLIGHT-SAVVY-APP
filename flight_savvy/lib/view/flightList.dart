@@ -91,6 +91,15 @@ class _FlightListState extends State<FlightList> {
 
             List<List<List<dynamic>>>? data = snapshot.data;
 
+            if (data == null || data.isEmpty) {
+              print('YEsss');
+              return Center(
+                  child: Text(
+                "No Flights Found ",
+                style: TextStyle(fontFamily: 'OverpassM', fontSize: 25),
+              ));
+            }
+
             return Column(
               children: [
                 // Sorting Buttons
@@ -173,8 +182,8 @@ class _FlightListState extends State<FlightList> {
                               departure: flight_instance[1].toString(),
                               destination: flight_instance[3].toString(),
                               departureTime: flight_instance[2],
-                              segments: flight_instance.last,isOneway: widget.vals[2])
-                              ;
+                              segments: flight_instance.last,
+                              isOneway: widget.vals[2]);
                         },
                       );
                     },
