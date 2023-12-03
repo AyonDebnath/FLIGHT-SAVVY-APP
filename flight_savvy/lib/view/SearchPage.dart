@@ -413,11 +413,13 @@ class HomePageState extends State<SearchPage> {
                                     Icons.search_rounded,
                                     size: 23,
                                   ),
-                                  Text(
-                                    'Explore',
-                                    style: TextStyle(
-                                        fontFamily: 'RobotoC', fontSize: 20),
-                                  )
+                                  Flexible(
+                                    child: Text(
+                                      'Explore',
+                                      overflow: TextOverflow.ellipsis, // Handle overflow
+                                      style: TextStyle(fontFamily: 'RobotoC', fontSize: 20),
+                                    ),
+                                  ),
                                 ]),
                               ),
                               _selectPassenger(context),

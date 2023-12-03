@@ -57,6 +57,22 @@ class _LoginViewState extends State<LoginView> {
     }
   }
 
+  void _continueAsGuest() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => HomePage(username: "Guest")),
+          (Route<dynamic> route) => false,
+    );
+  }
+
+  Widget _buildGuestButton() {
+    return TextButton(
+      onPressed: _continueAsGuest,
+      child: Text('Continue as Guest', style: TextStyle(color: Colors.teal)),
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,6 +130,7 @@ class _LoginViewState extends State<LoginView> {
                 ],
                 _buildFlatButton(context, SignupView(), "Don't have an account? Sign Up"),
                 _buildFlatButton(context, ForgotPassView(), 'Forgot Password?'),
+                _buildGuestButton(),
               ],
             ),
           ),
