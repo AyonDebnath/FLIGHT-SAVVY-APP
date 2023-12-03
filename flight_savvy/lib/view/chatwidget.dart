@@ -32,7 +32,7 @@ class chatState extends State<chatWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final Scale = (MediaQuery.of(context).size.height) / 838.4;
+    final Scale = (MediaQuery.of(context).size.height) / 1000;
     return Column(
       children: [
         Expanded(

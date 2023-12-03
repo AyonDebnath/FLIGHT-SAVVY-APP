@@ -43,7 +43,7 @@ class OpenPassengerList extends StatelessWidget {
                   });
             })
           ],
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.blue,
           leading: IconButton(
             icon: Icon(Icons.close, color: Colors.black),
             onPressed: () {

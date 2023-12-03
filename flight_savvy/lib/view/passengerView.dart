@@ -95,7 +95,7 @@ class ItemViewModel with ChangeNotifier implements ListItem {
         ),
         Text(
           "${_indexAdult.toString()}",
-          style: TextStyle(fontSize: 30, color: Colors.amberAccent),
+          style: TextStyle(fontSize: 30, color: Colors.black),
         ),
         SizedBox(
           width: 10,
@@ -136,7 +136,7 @@ class ItemViewModel with ChangeNotifier implements ListItem {
         ),
         Text(
           "${_indexKid.toString()}",
-          style: TextStyle(fontSize: 30, color: Colors.amberAccent),
+          style: TextStyle(fontSize: 30, color: Colors.black),
         ),
         SizedBox(
           width: 10,
@@ -177,7 +177,7 @@ class ItemViewModel with ChangeNotifier implements ListItem {
         ),
         Text(
           "${_indexBaby.toString()}",
-          style: TextStyle(fontSize: 30, color: Colors.amberAccent),
+          style: TextStyle(fontSize: 30, color: Colors.black),
         ),
         SizedBox(
           width: 10,
@@ -218,7 +218,7 @@ class ItemViewModel with ChangeNotifier implements ListItem {
         ),
         Text(
           "${_indexOld.toString()}",
-          style: TextStyle(fontSize: 30, color: Colors.amberAccent),
+          style: TextStyle(fontSize: 30, color: Colors.black),
         ),
         SizedBox(
           width: 10,
@@ -259,7 +259,7 @@ class ItemViewModel with ChangeNotifier implements ListItem {
         ),
         Text(
           "${_indexStudent.toString()}",
-          style: TextStyle(fontSize: 30, color: Colors.amberAccent),
+          style: TextStyle(fontSize: 30, color: Colors.black),
         ),
         SizedBox(
           width: 10,
@@ -300,7 +300,7 @@ class ItemViewModel with ChangeNotifier implements ListItem {
         ),
         Text(
           "${_indexYoung.toString()}",
-          style: TextStyle(fontSize: 30, color: Colors.amberAccent),
+          style: TextStyle(fontSize: 30, color: Colors.black),
         ),
         SizedBox(
           width: 10,

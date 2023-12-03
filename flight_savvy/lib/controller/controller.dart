@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flight_savvy/main.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:csv/csv.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,7 +15,7 @@ class controller {
     const clientId = 'iC4C1tpTShbup95uODppQ9GhrGIgkyJR';
     const clientSecret = '7YOrHgCDAAzEGvrk';
     final url =
-        Uri.parse('https://test.api.amadeus.com/v1/security/oauth2/token');
+    Uri.parse('https://test.api.amadeus.com/v1/security/oauth2/token');
 
     final response = await Client.post(
       url,
@@ -73,8 +72,8 @@ class controller {
         };
 
         var url =
-            Uri.parse('https://test.api.amadeus.com/v2/shopping/flight-offers')
-                .replace(queryParameters: params);
+        Uri.parse('https://test.api.amadeus.com/v2/shopping/flight-offers')
+            .replace(queryParameters: params);
         var res = await Client.get(url, headers: headers);
         if (res.statusCode != 200) {
           throw Exception(
@@ -93,7 +92,7 @@ class controller {
 
           return stopsCount == stops;
         }).toList();
-       // print(isNonStop);
+        // print(isNonStop);
         if (isNonStop == true) {
           var extracted = await extractFlightData(filteredFlights, isOneway);
 
@@ -243,7 +242,7 @@ List<List<List<dynamic>>> extractFlightData(
 }
 
 
-/*  
+/*
 {
             "type": "amadeusOAuth2Token",
             "username": "chaudharyrushi123@gmail.com",
