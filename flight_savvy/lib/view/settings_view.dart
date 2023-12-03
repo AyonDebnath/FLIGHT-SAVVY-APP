@@ -14,7 +14,10 @@ class _settingsState extends State<settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings', style: TextStyle(color: Colors.black),),
+        title: Text(
+          'Settings',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         bottom: PreferredSize(
@@ -80,10 +83,11 @@ class _CardListState extends State<CardList> {
                   print('Switch is $isSwitched');
                 },
               ),
-
             ],
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -105,22 +109,28 @@ class _CardListState extends State<CardList> {
                       MyApp.selectedCurrency = newValue!;
                     });
                   },
-                  items: currencies.map<DropdownMenuItem<String>>((String value) {
+                  items:
+                      currencies.map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
                     );
                   }).toList(),
-                  underline: Container(), // Remove the default underline
-                  icon: Icon(Icons.arrow_drop_down), // Add an arrow icon
-                  style: TextStyle(fontSize: 16, color: Theme.of(context).textTheme.bodyText1?.color ?? Colors.black, ),
-                  isExpanded: false, // This property allows the dropdown to take the minimum space needed
+                  underline: Container(),
+                  // Remove the default underline
+                  icon: Icon(Icons.arrow_drop_down),
+                  // Add an arrow icon
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).textTheme.bodyText1?.color ??
+                        Colors.black,
+                  ),
+                  isExpanded:
+                      false, // This property allows the dropdown to take the minimum space needed
                 ),
               ),
             ],
           ),
-
-
         ],
       ),
     );

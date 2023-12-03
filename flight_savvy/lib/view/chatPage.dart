@@ -3,18 +3,19 @@ import 'dart:ui';
 import 'package:flight_savvy/view/chatwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gap/gap.dart';
 import 'package:stroke_text/stroke_text.dart';
+import 'package:gap/gap.dart';
 
 class chatPage extends StatefulWidget {
-  @override
   final String username;
+
   chatPage(this.username);
+
+  @override
   State<chatPage> createState() => chatState();
 }
 
 class chatState extends State<chatPage> {
-  
   @override
   Widget build(BuildContext context) {
     final Scale = (MediaQuery.of(context).size.height) / 838.4;
@@ -27,33 +28,33 @@ class chatState extends State<chatPage> {
       ])),
       child: ListView(
         children: [
-           Gap(30*Scale),
+          Gap(30 * Scale),
           Container(
             alignment: Alignment.topLeft,
             child: StrokeText(
               strokeWidth: 4.0,
               text: 'Hi,\n${widget.username}!',
-              textStyle:  TextStyle(
+              textStyle: TextStyle(
                   fontFamily: 'OverpassM',
-                  fontSize: 70*Scale,
+                  fontSize: 70 * Scale,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w200),
             ),
           ),
-           Gap(20*Scale),
-           Center(
+          Gap(20 * Scale),
+          Center(
             child: StrokeText(
               text: 'Welcome to flySavvy',
               strokeWidth: 2.0,
               textStyle: TextStyle(
                 fontFamily: 'OverpassM',
-                fontSize: 32*Scale,
+                fontSize: 32 * Scale,
               ),
             ),
           ),
-           Gap(20*Scale),
+          Gap(20 * Scale),
           Padding(
-            padding:  EdgeInsets.all(8.0 * Scale),
+            padding: EdgeInsets.all(8.0 * Scale),
             child: Container(
               width: 340 * Scale,
               height: 400 * Scale,
