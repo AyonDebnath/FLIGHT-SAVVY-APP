@@ -3,6 +3,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class ContactUs extends StatelessWidget {
+  void launchEmailApp(String emailAddress) async {
+    var emailLaunch = 'mailto:${emailAddress}';
+    Uri emailLaunchUrl = Uri.parse(emailLaunch);
+    await launchUrl(emailLaunchUrl);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +60,9 @@ class ContactUs extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  launchEmailApp('comp4768project@gmail.com');
+                },
                 child: Text('Send Us an Email'),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue, // Button color

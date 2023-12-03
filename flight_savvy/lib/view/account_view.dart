@@ -1,18 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'editInfo_view.dart';
+import 'editDetails_view.dart';
 import 'login_view.dart';
 import 'user_info.dart';
 
-class details extends StatefulWidget {
-  const details({super.key});
+class account extends StatefulWidget {
+  const account({super.key});
 
   @override
-  State<details> createState() => _detailsState();
+  State<account> createState() => _accountState();
 }
 
-class _detailsState extends State<details> {
+class _accountState extends State<account> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,7 +122,7 @@ class CardList extends StatelessWidget {
         }
         if (index == 1) {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => editInfo()),
+            MaterialPageRoute(builder: (context) => editDetails()),
           );
         }
         print("index:$index pressed");

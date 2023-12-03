@@ -50,12 +50,29 @@ class UserService {
     return Address;
   }
 
+  Future<String> getImageUrl(String id) async {
+    DocumentSnapshot user = await userCollection.doc(id).get();
+    late String imageUrl;
+    try{
+      imageUrl =  user['imageUrl'];
+    }
+    catch(e){
+      imageUrl = '';
+    }
+    return imageUrl;
+  }
+
+
   Future<void> updatePhone(String id, String name) async {
     return await userCollection.doc(id).update({'Phone': name});
   }
 
   Future<void> updateAddress(String id, String name) async {
     return await userCollection.doc(id).update({'Address': name});
+  }
+
+  Future<void> updateImageUrl(String id, var imageUrl) async {
+    return await userCollection.doc(id).update({'imageUrl': imageUrl});
   }
 
   Future<void> deleteDiaryEntry(String id) async {
