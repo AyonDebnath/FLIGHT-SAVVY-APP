@@ -1,95 +1,66 @@
 import 'package:flutter/material.dart';
 
-class Sustainability extends StatefulWidget {
-  const Sustainability({Key? key}) : super(key: key);
-
-  @override
-  _SustainabilityState createState() => _SustainabilityState();
-}
-
-class _SustainabilityState extends State<Sustainability> {
-  bool _isExpanded = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ExpansionPanelList(
-          expandedHeaderPadding: EdgeInsets.zero,
-          elevation: 1,
-          dividerColor: Colors.transparent,
-          expansionCallback: (int index, bool isExpanded) {
-            setState(() {
-              _isExpanded = !_isExpanded;
-            });
-          },
-          children: [
-            ExpansionPanel(
-              isExpanded: _isExpanded,
-              headerBuilder: (BuildContext context, bool isExpanded) {
-                return const ListTile(
-                  title: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'Sustainability',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                      ),
-                    ),
-                  ),
-                );
-              },
-              body: _buildClickableCard(
-                title: 'Why FlySavvy?',
-                text:
-                '...',
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildClickableCard({
-    required String text,
-    required String title,
-  }) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => SustainabilityDetails(title: title, text: text),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class SustainabilityDetails extends StatelessWidget {
-  final String title;
-  final String text;
-
-  const SustainabilityDetails({Key? key, required this.title, required this.text})
-      : super(key: key);
-
+class sustainability extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Text(
-          text,
-          style: const TextStyle(
-              fontSize: 25.0,
+        title: Text('Sustaibability'),
+        backgroundColor: Colors.greenAccent,
+        centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1.0),
+          child: Container(
             color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.italic,
+            height: 1.0,
+          ), // Set the preferred size of the underline
+        ),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/sustainableBackground.jpeg'),
+            fit: BoxFit
+                .cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Text('We’re committed to doing all that we can as a global business to reduce our own carbon footprint. ',
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'We’re helping to ensure a positive future for destinations and local communities in every part of the world for generations to come. We know we’ve got a responsibility to our planet and each other, and together, as a group, we can be a catalyst for change.',
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'We are committed to helping shape a more responsible future for travel in collaboration with our partners.',
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
         ),
       ),

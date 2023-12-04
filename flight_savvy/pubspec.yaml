@@ -124,4 +124,6 @@ flutter:
     - lib/assets/airplane background.png
     - lib/assets/floght_logo.png
     - assets/welcome_guest.png
+    - assets/sustainableBackground.jpeg
+    - assets/airplane.png
 
