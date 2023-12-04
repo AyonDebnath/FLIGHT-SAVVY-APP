@@ -15,7 +15,7 @@ class controller {
     const clientId = 'iC4C1tpTShbup95uODppQ9GhrGIgkyJR';
     const clientSecret = '7YOrHgCDAAzEGvrk';
     final url =
-        Uri.parse('https://test.api.amadeus.com/v1/security/oauth2/token');
+    Uri.parse('https://test.api.amadeus.com/v1/security/oauth2/token');
 
     final response = await Client.post(
       url,
@@ -67,14 +67,14 @@ class controller {
           'children': '0',
           'infants': '0',
           'travelClass': 'ECONOMY',
-          'max': '4',
+          'max': '40',
           'currencyCode': MyApp.selectedCurrency,
           'nonStop': '$isNonStop'
         };
 
         var url =
-            Uri.parse('https://test.api.amadeus.com/v2/shopping/flight-offers')
-                .replace(queryParameters: params);
+        Uri.parse('https://test.api.amadeus.com/v2/shopping/flight-offers')
+            .replace(queryParameters: params);
         var res = await Client.get(url, headers: headers);
         if (res.statusCode != 200) {
           throw Exception(
@@ -93,18 +93,15 @@ class controller {
 
           return stopsCount == stops;
         }).toList();
-        // print(isNonStop);
         if (isNonStop == true) {
           var extracted = await extractFlightData(filteredFlights, isOneway);
 
           return extracted;
         } else {
           var extracted = await extractFlightData(allFlight, isOneway);
-          print(extracted.length);
           return extracted;
         }
       } catch (e, stacktrace) {
-        //print('$e,$stacktrace');
         await setToken();
         count++;
       }
@@ -120,9 +117,7 @@ class controller {
     var file = await assets.loadString(filePath);
 
     List<String> listSplit = file.split('\n');
-    print('done1');
     List<List<String>> listF = listSplit.map((e) => e.split(',')).toList();
-    print('done2');
     for (int i = 0; i < listF.length; i++) {
       var e = listF[i];
 

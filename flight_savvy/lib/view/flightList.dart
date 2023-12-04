@@ -92,12 +92,11 @@ class _FlightListState extends State<FlightList> {
             List<List<List<dynamic>>>? data = snapshot.data;
 
             if (data == null || data.isEmpty) {
-              print('YEsss');
               return Center(
                   child: Text(
-                "No Flights Found ",
-                style: TextStyle(fontFamily: 'OverpassM', fontSize: 25),
-              ));
+                    "No Flights Found ",
+                    style: TextStyle(fontFamily: 'OverpassM', fontSize: 25),
+                  ));
             }
 
             return Column(
@@ -156,24 +155,22 @@ class _FlightListState extends State<FlightList> {
                               widget.vals[2] == true
                                   ? const Gap(0)
                                   : Center(
-                                      child: flightCardRet([
-                                        flight_instance2[0],
-                                        flight_instance2[6],
-                                        'Lufthansa',
-                                        flight_instance2[4],
-                                        '202131',
-                                        flight_instance2[1].toString(),
-                                        flight_instance2[3].toString(),
-                                        flight_instance2[2],
-                                      ]),
-                                    ),
+                                child: flightCardRet([
+                                  flight_instance2[0],
+                                  flight_instance2[6],
+                                  'Lufthansa',
+                                  flight_instance2[4],
+                                  '202131',
+                                  flight_instance2[1].toString(),
+                                  flight_instance2[3].toString(),
+                                  flight_instance2[2],
+                                ]),
+                              ),
                             ]),
                           );
                         },
                         openBuilder:
                             (BuildContext context, VoidCallback openContainer) {
-                          print('........${flight_instance2.isEmpty}');
-                          //print(flight_instance2!.last);
                           return flightSegmentDetails(
                               flight_instance2.isEmpty == true
                                   ? []

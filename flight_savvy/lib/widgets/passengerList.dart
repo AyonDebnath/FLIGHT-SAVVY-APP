@@ -11,16 +11,11 @@ class OpenPassengerList extends StatelessWidget {
     titleList.add("Adult");
     titleList.add("Kid");
     titleList.add("Baby");
-    titleList.add("Old");
-    titleList.add("Student");
-    titleList.add("Young");
     List<String> subTitleList = [];
     subTitleList.add("Over 24 ");
     subTitleList.add("Between 2-11 ");
     subTitleList.add("Between 0-2 ");
-    subTitleList.add("Over 65 ");
-    subTitleList.add("Between 11-24 ");
-    subTitleList.add("Between 11-24 ");
+
     return Scaffold(
         appBar: AppBar(
 

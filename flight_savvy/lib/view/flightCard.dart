@@ -65,7 +65,7 @@ class FlightCard extends StatelessWidget {
                         departure,
                         style: isColor == null
                             ? Styles.headLineStyle3
-                                .copyWith(color: Colors.white)
+                            .copyWith(color: Colors.white)
                             : Styles.headLineStyle3,
                       ),
                       Expanded(child: Container()),
@@ -83,12 +83,12 @@ class FlightCard extends StatelessWidget {
                                   return Flex(
                                     direction: Axis.horizontal,
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     mainAxisSize: MainAxisSize.max,
                                     children: List.generate(
                                       (constraints.constrainWidth() / 6)
                                           .floor(),
-                                      (index) => SizedBox(
+                                          (index) => SizedBox(
                                         width: 3,
                                         height: 1,
                                         child: DecoratedBox(
@@ -123,7 +123,7 @@ class FlightCard extends StatelessWidget {
                         destination,
                         style: isColor == null
                             ? Styles.headLineStyle3
-                                .copyWith(color: Colors.white)
+                            .copyWith(color: Colors.white)
                             : Styles.headLineStyle3,
                       ),
                     ],
@@ -138,7 +138,7 @@ class FlightCard extends StatelessWidget {
                           '${DateFormat('jm').format(DateTime.parse(departureTime))}',
                           style: isColor == null
                               ? Styles.headLineStyle4
-                                  .copyWith(color: Colors.white)
+                              .copyWith(color: Colors.white)
                               : Styles.headLineStyle4,
                         ),
                       ),
@@ -148,7 +148,7 @@ class FlightCard extends StatelessWidget {
                           duration.substring(2),
                           style: isColor == null
                               ? Styles.headLineStyle3
-                                  .copyWith(color: Colors.white)
+                              .copyWith(color: Colors.white)
                               : Styles.headLineStyle3,
                         ),
                       ),
@@ -159,7 +159,7 @@ class FlightCard extends StatelessWidget {
                           textAlign: TextAlign.end,
                           style: isColor == null
                               ? Styles.headLineStyle4
-                                  .copyWith(color: Colors.white)
+                              .copyWith(color: Colors.white)
                               : Styles.headLineStyle4,
                         ),
                       ),
@@ -249,7 +249,7 @@ class flightCardRet extends StatelessWidget {
                         departure,
                         style: isColor == null
                             ? Styles.headLineStyle3
-                                .copyWith(color: Colors.white)
+                            .copyWith(color: Colors.white)
                             : Styles.headLineStyle3,
                       ),
                       Expanded(child: Container()),
@@ -267,12 +267,12 @@ class flightCardRet extends StatelessWidget {
                                   return Flex(
                                     direction: Axis.horizontal,
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     mainAxisSize: MainAxisSize.max,
                                     children: List.generate(
                                       (constraints.constrainWidth() / 6)
                                           .floor(),
-                                      (index) => SizedBox(
+                                          (index) => SizedBox(
                                         width: 3,
                                         height: 1,
                                         child: DecoratedBox(
@@ -307,7 +307,7 @@ class flightCardRet extends StatelessWidget {
                         destination,
                         style: isColor == null
                             ? Styles.headLineStyle3
-                                .copyWith(color: Colors.white)
+                            .copyWith(color: Colors.white)
                             : Styles.headLineStyle3,
                       ),
                     ],
@@ -322,7 +322,7 @@ class flightCardRet extends StatelessWidget {
                           '${DateFormat('jm').format(DateTime.parse(departureTime))}',
                           style: isColor == null
                               ? Styles.headLineStyle4
-                                  .copyWith(color: Colors.white)
+                              .copyWith(color: Colors.white)
                               : Styles.headLineStyle4,
                         ),
                       ),
@@ -330,7 +330,7 @@ class flightCardRet extends StatelessWidget {
                         duration.substring(2),
                         style: isColor == null
                             ? Styles.headLineStyle3
-                                .copyWith(color: Colors.white)
+                            .copyWith(color: Colors.white)
                             : Styles.headLineStyle3,
                       ),
                       SizedBox(
@@ -340,7 +340,7 @@ class flightCardRet extends StatelessWidget {
                           textAlign: TextAlign.end,
                           style: isColor == null
                               ? Styles.headLineStyle4
-                                  .copyWith(color: Colors.white)
+                              .copyWith(color: Colors.white)
                               : Styles.headLineStyle4,
                         ),
                       ),
