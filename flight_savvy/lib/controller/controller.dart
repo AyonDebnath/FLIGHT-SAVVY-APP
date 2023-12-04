@@ -12,8 +12,8 @@ class controller {
   controller() {}
 
   Future<void> setToken() async {
-    const clientId = 'iC4C1tpTShbup95uODppQ9GhrGIgkyJR';
-    const clientSecret = '7YOrHgCDAAzEGvrk';
+    const clientId = 'iC4C1tpTShbup95uODppQ9GhrGIgkyJR';  // In case if the given API key and Secret does not work please use the alternative below:
+    const clientSecret = '7YOrHgCDAAzEGvrk'; // API key: 'WFYbK2EglKCDvj4JGGVuuiOzALXWGKhF', API Secret: 'GCH1efbTmqArKWG7'
     final url =
     Uri.parse('https://test.api.amadeus.com/v1/security/oauth2/token');
 

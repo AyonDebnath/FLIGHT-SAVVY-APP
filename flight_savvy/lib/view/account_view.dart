@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flight_savvy/view/signup_view.dart';
 import 'package:flutter/material.dart';
-
 import 'editDetails_view.dart';
 import 'login_view.dart';
 import 'user_info.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../model/trip.dart';
 
 class yourTrips extends StatelessWidget {
