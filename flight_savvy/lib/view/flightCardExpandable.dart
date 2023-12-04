@@ -13,32 +13,29 @@ class Expandables extends StatelessWidget {
   List<dynamic>? segments2;
 
   Expandables(
-    segments2,
+      segments2,
       {required this.airline,
-      required this.duration,
-      required this.flightNumber,
-      required this.departure,
-      required this.destination,
-      required this.departureTime,
-      required this.arrivalTime,
-      required this.price,
-      required this.segments});
+        required this.duration,
+        required this.flightNumber,
+        required this.departure,
+        required this.destination,
+        required this.departureTime,
+        required this.arrivalTime,
+        required this.price,
+        required this.segments});
 
   String _getSegmentFlights() {
     List<String> details = [];
     for (var segment in this.segments) {
       for (var data in segment) {
         details.add(data.toString());
-        // print(data[data.length - 1]);
       }
     }
-    print(details[0]);
     return details.join(''); // Join the list elements into a single string
   }
 
   @override
   Widget build(BuildContext context) {
-    print(segments);
     return Container(
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

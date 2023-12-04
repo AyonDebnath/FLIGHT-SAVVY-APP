@@ -25,16 +25,6 @@ class ItemViewModel with ChangeNotifier implements ListItem {
     if (_indexKid != 0) {
       passengerMap["Kid"] = _indexKid;
     }
-    if (_indexOld != 0) {
-      passengerMap["Old"] = _indexOld;
-    }
-    if (_indexStudent != 0) {
-      passengerMap["Student"] = _indexStudent;
-    }
-    if (_indexYoung != 0) {
-      passengerMap["Young"] = _indexYoung;
-    }
-
     return passengerMap;
   }
 
@@ -191,128 +181,6 @@ class ItemViewModel with ChangeNotifier implements ListItem {
     ));
   }
 
-  Widget buildTrailingOld(BuildContext context) {
-    return (Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        IconButton(
-          icon: Icon(Icons.do_disturb_on_outlined),
-          onPressed: () {
-            if (_indexOld > 0) {
-              decrementOld();
-            } else {
-              Fluttertoast.showToast(
-                  msg: "Passenger number cannot below zero",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-            }
-          },
-          iconSize: 30,
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Text(
-          "${_indexOld.toString()}",
-          style: TextStyle(fontSize: 30, color: Colors.black),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        IconButton(
-          icon: Icon(Icons.add_box_outlined),
-          onPressed: incrementOld,
-          iconSize: 30,
-        ),
-      ],
-    ));
-  }
-
-  Widget buildTrailingStudent(BuildContext context) {
-    return (Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        IconButton(
-          icon: Icon(Icons.do_disturb_on_outlined),
-          onPressed: () {
-            if (_indexStudent > 0) {
-              decrementStudent();
-            } else {
-              Fluttertoast.showToast(
-                  msg: "Passenger number cannot below zero",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-            }
-          },
-          iconSize: 30,
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Text(
-          "${_indexStudent.toString()}",
-          style: TextStyle(fontSize: 30, color: Colors.black),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        IconButton(
-          icon: Icon(Icons.add_box_outlined),
-          onPressed: incrementStudent,
-          iconSize: 30,
-        ),
-      ],
-    ));
-  }
-
-  Widget buildTrailingYoung(BuildContext context) {
-    return (Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        IconButton(
-          icon: Icon(Icons.do_disturb_on_outlined),
-          onPressed: () {
-            if (_indexYoung > 0) {
-              decrementYoung();
-            } else {
-              Fluttertoast.showToast(
-                  msg: "Passenger number cannot below zero",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-            }
-          },
-          iconSize: 30,
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Text(
-          "${_indexYoung.toString()}",
-          style: TextStyle(fontSize: 30, color: Colors.black),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        IconButton(
-          icon: Icon(Icons.add_box_outlined),
-          onPressed: incrementYoung,
-          iconSize: 30,
-        ),
-      ],
-    ));
-  }
 
   incrementAdult() {
     _indexAdult++;
@@ -329,20 +197,6 @@ class ItemViewModel with ChangeNotifier implements ListItem {
     notifyListeners();
   }
 
-  incrementOld() {
-    _indexOld++;
-    notifyListeners();
-  }
-
-  incrementStudent() {
-    _indexStudent++;
-    notifyListeners();
-  }
-
-  incrementYoung() {
-    _indexYoung++;
-    notifyListeners();
-  }
 
   decrementAdult() {
     _indexAdult--;
@@ -359,27 +213,10 @@ class ItemViewModel with ChangeNotifier implements ListItem {
     notifyListeners();
   }
 
-  decrementOld() {
-    _indexOld--;
-    notifyListeners();
-  }
-
-  decrementStudent() {
-    _indexStudent--;
-    notifyListeners();
-  }
-
-  decrementYoung() {
-    _indexYoung--;
-    notifyListeners();
-  }
 
   buildTrailing(BuildContext context, String titleList) {
     if (titleList == "Adult") return buildTrailingAdult(context);
     if (titleList == "Kid") return buildTrailingKid(context);
     if (titleList == "Baby") return buildTrailingBaby(context);
-    if (titleList == "Old") return buildTrailingOld(context);
-    if (titleList == "Student") return buildTrailingStudent(context);
-    if (titleList == "Young") return buildTrailingYoung(context);
   }
 }
