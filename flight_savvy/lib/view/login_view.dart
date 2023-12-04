@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flight_savvy/view/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'signup_view.dart';
@@ -41,6 +42,10 @@ class _LoginViewState extends State<LoginView> {
         _errorMessage = "Please provide a valid email and/or password";
       });
     }
+  }
+
+  Future<void> _logout() async {
+    await FirebaseAuth.instance.signOut();
   }
 
   Future<void> _loginWithGoogle() async {
