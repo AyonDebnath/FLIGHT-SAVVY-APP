@@ -91,6 +91,15 @@ class _FlightListState extends State<FlightList> {
 
             List<List<List<dynamic>>>? data = snapshot.data;
 
+            if (data == null || data.isEmpty) {
+              print('YEsss');
+              return Center(
+                  child: Text(
+                "No Flights Found ",
+                style: TextStyle(fontFamily: 'OverpassM', fontSize: 25),
+              ));
+            }
+
             return Column(
               children: [
                 // Sorting Buttons
@@ -119,14 +128,14 @@ class _FlightListState extends State<FlightList> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: data!.length,
+                    itemCount: data.length,
                     itemBuilder: (context, index) {
                       var flight_instance = data[index][0];
-                      var flight_instance2 = null;
+                      List<dynamic> flight_instance2 = [];
                       if (widget.vals[2] == false) {
                         flight_instance2 = data[index][1];
                       }
-                      //print(flight_instance.last);
+                      //rint(flight_instance.last);
                       return OpenContainer(
                         closedBuilder: (BuildContext context, VoidCallback _) {
                           return Container(
@@ -163,8 +172,12 @@ class _FlightListState extends State<FlightList> {
                         },
                         openBuilder:
                             (BuildContext context, VoidCallback openContainer) {
-                          //print(flight_instance);
+                          print('........${flight_instance2.isEmpty}');
+                          //print(flight_instance2!.last);
                           return flightSegmentDetails(
+                              flight_instance2.isEmpty == true
+                                  ? []
+                                  : flight_instance2.last,
                               duration: flight_instance[0],
                               price: flight_instance[6],
                               airline: 'Lufthansa',
@@ -173,8 +186,8 @@ class _FlightListState extends State<FlightList> {
                               departure: flight_instance[1].toString(),
                               destination: flight_instance[3].toString(),
                               departureTime: flight_instance[2],
-                              segments: flight_instance.last,isOneway: widget.vals[2])
-                              ;
+                              segments: flight_instance.last,
+                              isOneway: widget.vals[2]);
                         },
                       );
                     },
