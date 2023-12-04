@@ -1,30 +1,24 @@
-//API_KEY = v88bf6yhk4wd
-
-import 'package:flight_savvy/controller/chatBot_controller.dart';
-import 'package:flight_savvy/controller/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flight_savvy/controller/chatBot_controller.dart';
 
 class chatWidget extends StatefulWidget {
   @override
-  State<chatWidget> createState() => chatState();
+  State<chatWidget> createState() => _chatState();
 }
 
-class chatState extends State<chatWidget> {
+class _chatState extends State<chatWidget> {
   TextEditingController cont = TextEditingController();
   List<Map<String, String>> messages = [];
   ChatBotCont chat_cont = ChatBotCont();
-  bool isLoading = false;
 
   void chat(String userMsg) async {
+    if (userMsg.isEmpty) return;
     setState(() {
       messages.add({'message': userMsg, 'user': 'user'});
-      messages.add({'message': 'Loading', 'user': 'chatBot'});
-      isLoading = true;
     });
 
+    await Future.delayed(Duration(milliseconds: 500));
     String chatresp = await chat_cont.Chat(userMsg);
-    messages.removeLast();
-    print(chatresp);
     setState(() {
       messages.add({'message': chatresp, 'user': 'chatBot'});
     });
@@ -32,50 +26,45 @@ class chatState extends State<chatWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final Scale = (MediaQuery.of(context).size.height) / 1000;
     return Column(
       children: [
         Expanded(
-          child: ListView.builder(
+          child: messages.isEmpty
+              ? Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: Image.asset('assets/chatbot.png', height: 100),
+                  ),
+                  Text(
+                    "Hi there! I'm your ChatBot. How can I help you today?",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                  ),
+                ],
+              ),
+            ),
+          )
+              : ListView.builder(
             itemCount: messages.length,
-            shrinkWrap: true,
-            padding: EdgeInsets.only(top: 10 * Scale, bottom: 10 * Scale),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             itemBuilder: (context, index) {
-              return Container(
-                padding: EdgeInsets.only(
-                    left: (messages[index]['user'] == "user"
-                        ? 14 * Scale
-                        : 30 * Scale),
-                    right: (messages[index]['user'] == "chatBot"
-                        ? 14 * Scale
-                        : 30 * Scale),
-                    top: 10 * Scale,
-                    bottom: 10 * Scale),
-                child: Align(
-                  alignment: (messages[index]['user'] == "user"
-                      ? Alignment.topLeft
-                      : Alignment.topRight),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: (messages[index]['user'] == "user"
-                          ? Colors.grey.shade200
-                          : const Color.fromRGBO(144, 202, 249, 1)),
-                    ),
-                    padding: messages[index]['message']! == "Loading"
-                        ? EdgeInsets.all(0)
-                        : const EdgeInsets.all(16),
-                    child: messages[index]['message']! == "Loading"
-                        ? Image(
-                            height: 40,
-                            width: 70,
-                            image: AssetImage('assets/images/textLoading.gif'),
-                          )
-                        : Text(
-                            messages[index]['message']!,
-                            style: const TextStyle(
-                                fontSize: 15, fontFamily: 'overpassM'),
-                          ),
+              bool isUserMessage = messages[index]['user'] == "user";
+              return Align(
+                alignment: isUserMessage ? Alignment.topLeft : Alignment.topRight,
+                child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: isUserMessage ? Colors.grey.shade300 : Colors.lightBlue[200],
+                  ),
+                  child: Text(
+                    messages[index]['message'] ?? "",
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
               );
@@ -83,26 +72,32 @@ class chatState extends State<chatWidget> {
           ),
         ),
         Container(
-          padding: const EdgeInsets.fromLTRB(15, 8, 8, 8),
+          margin: const EdgeInsets.all(10),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(20))),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(25),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 5,
+              ),
+            ],
+          ),
           child: Row(
             children: [
               Expanded(
                 child: TextField(
                   controller: cont,
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(2))),
-                    fillColor: Colors.white,
-                    focusColor: Colors.white,
-                    hintText: '    Type your message...',
+                  decoration: InputDecoration(
+                    hintText: 'Type your message...',
+                    border: InputBorder.none,
                   ),
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.send),
+                icon: Icon(Icons.send, color: Colors.blue),
                 onPressed: () {
                   final userMessage = cont.text.trim();
                   chat(userMessage);

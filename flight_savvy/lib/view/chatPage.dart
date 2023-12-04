@@ -1,9 +1,7 @@
 import 'dart:ui';
-
 import 'package:flight_savvy/view/chatwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:stroke_text/stroke_text.dart';
 import 'package:gap/gap.dart';
 
 class chatPage extends StatefulWidget {
@@ -20,30 +18,46 @@ class _ChatPageState extends State<chatPage> {
   Widget build(BuildContext context) {
     final scale = MediaQuery.of(context).size.height / 838.4;
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.blue.shade200,
+                Colors.white,
+              ],
+            ),
+          ),
           padding: EdgeInsets.symmetric(horizontal: 16.0 * scale),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gap(30 * scale),
-              Text(
-                'Hi,\n${widget.username}!',
-                style: TextStyle(
-                  fontSize: 70 * scale,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueGrey[800],
+              Gap(20 * scale),
+              Center(
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  width: 200 * scale,
                 ),
               ),
               Gap(20 * scale),
+              Text(
+                'Hi, ${widget.username}!',
+                style: TextStyle(
+                  fontSize: 36 * scale,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              Gap(10 * scale),
               Center(
                 child: Text(
                   'Welcome to FlySavvy',
                   style: TextStyle(
-                    fontSize: 32 * scale,
+                    fontSize: 24 * scale,
                     fontWeight: FontWeight.w500,
-                    color: Colors.blueGrey[600],
+                    color: Colors.blueGrey[800],
                   ),
                 ),
               ),
