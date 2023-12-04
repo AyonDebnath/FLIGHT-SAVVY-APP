@@ -1,5 +1,4 @@
 import 'package:intl/intl.dart';
-
 import '/utils/app_layout.dart';
 import '/utils/app_styles.dart';
 import '/widgets/thick_container.dart';

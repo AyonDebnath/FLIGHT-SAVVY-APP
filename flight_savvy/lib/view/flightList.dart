@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import '../controller/controller.dart';
 import 'flightCard.dart';
 import 'package:animations/animations.dart';
-import 'package:flight_savvy/controller/controller.dart';
 
 enum FlightSort { best, fastest, cheapest }
 

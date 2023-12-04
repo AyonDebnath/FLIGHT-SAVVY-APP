@@ -2,7 +2,6 @@ import 'package:flight_savvy/view/sustainability.dart';
 import 'package:flight_savvy/view/whyChooseUs.dart';
 import 'package:flight_savvy/view/yourTrips.dart';
 import 'package:flutter/material.dart';
-
 import 'account_view.dart';
 import 'settings_view.dart';
 import 'support_view.dart';

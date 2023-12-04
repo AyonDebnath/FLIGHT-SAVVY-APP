@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '/widgets/thick_container.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
-
 import '/utils/app_layout.dart';
 import '/utils/app_styles.dart';
 
