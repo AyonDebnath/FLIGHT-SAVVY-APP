@@ -28,7 +28,6 @@ void main() async {
 
 Future<String> fetchUsername(String userId) async {
   var userDocument = await FirebaseFirestore.instance.collection('users').doc(userId).get();
-  // Assuming the username is stored under the field 'username'
   return userDocument.data()?['username'] ?? 'Guest';
 }
 
@@ -44,7 +43,6 @@ class MyApp extends StatelessWidget {
     return ValueListenableBuilder<ThemeMode>(
         valueListenable: themeNotifier,
         builder: (_, ThemeMode currentMode, __) {
-          // Remove the debug banner
           return MultiProvider(
               providers: [
                 ChangeNotifierProvider<ItemViewModel>(
