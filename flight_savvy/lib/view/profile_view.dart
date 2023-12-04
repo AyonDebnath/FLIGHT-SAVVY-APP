@@ -291,19 +291,9 @@ class ProfilePage extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(
-                          builder: (context) => const WhyChooseUsDetails(
-                            title: 'Why choose us?',
-                            text: "We want to bring the world to you. From choosing a destination to finding the best price, we want you to have all the options at your fingertips.\n"
-                              "That's why we're focused on making travel better for everyone.\n"
-                          "To make the entire planning and booking experience easy, simple and enjoyable from start to finish.\n"
-                          "To make sure you get the most for your money and from your trip.\n"
-                          "And to make our industry more transparent and deserving of your trust.\n"
-
-                          "This spirit shines through everything we do.\n"
-                          "We've always got your back and we're proud to be the most trusted travel search site in the world.",
-                          ),
-                  ));
-                  // Handle "Your details" press
+                          builder: (context) =>  whyChooseUs()
+                      )
+                  );
                 },
               ),
             ),

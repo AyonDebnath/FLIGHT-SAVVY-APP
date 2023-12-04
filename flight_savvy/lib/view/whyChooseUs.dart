@@ -1,91 +1,83 @@
 import 'package:flutter/material.dart';
 
-class WhyChooseUs extends StatefulWidget {
-  const WhyChooseUs({Key? key}) : super(key: key);
-
-  @override
-  _WhyChooseUsState createState() => _WhyChooseUsState();
-}
-
-class _WhyChooseUsState extends State<WhyChooseUs> {
-  bool _isExpanded = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ExpansionPanelList(
-          expandedHeaderPadding: EdgeInsets.zero,
-          elevation: 1,
-          dividerColor: Colors.transparent,
-          expansionCallback: (int index, bool isExpanded) {
-            setState(() {
-              _isExpanded = !_isExpanded;
-            });
-          },
-          children: [
-            ExpansionPanel(
-              isExpanded: _isExpanded,
-              headerBuilder: (BuildContext context, bool isExpanded) {
-                return const ListTile(
-                  title: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'Why FlySavvy?',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                      ),
-                    ),
-                  ),
-                );
-              },
-              body: _buildClickableCard(
-                title: 'Why FlySavvy?',
-                text:
-                '...',
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildClickableCard({
-    required String text,
-    required String title,
-  }) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => WhyChooseUsDetails(title: title, text: text),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class WhyChooseUsDetails extends StatelessWidget {
-  final String title;
-  final String text;
-
-  const WhyChooseUsDetails({Key? key, required this.title, required this.text})
-      : super(key: key);
-
+class whyChooseUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text('Why choose us'),
+        centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1.0),
+          child: Container(
+            color: Colors.black,
+            height: 1.0,
+          ), // Set the preferred size of the underline
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 16.0),
+      body: Container(
+        color: Colors.white12,
+        child: SingleChildScrollView( child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+                children: [
+                  Image.asset('assets/airplane.png'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text('We want to bring the world to you. From choosing a destination to finding the best price, we want you to have all the options at your fingertips.',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'That\'s why we\'re focused on making travel better for everyone.',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'To make sure you get the most for your money and from your trip.',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'And to make our industry more transparent and deserving of your trust.',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'This spirit shines through everything we do.',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'We\'ve always got your back and we\'re proud to be the most trusted travel search site in the world.',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                ],
+              ),
+        ),
         ),
       ),
     );
