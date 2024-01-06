@@ -1,3 +1,3 @@
-# Comp4768_Project
+# FLIGHT SAVVY APP
 
 Please read the project proposal for more details.
