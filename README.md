@@ -37,6 +37,7 @@ This will launch the Flight Savvy app on the default emulator or connected devic
 If you encounter any issues during the installation or running process, please refer to the Flutter documentation or check the repository's issue tracker for solutions.
 
 The app has been extensively tested to work with Pixel 7 Pro API 34.
+
 Happy flying with Flight Savvy! ✈️📱
 
 Some screenshots of the app:
