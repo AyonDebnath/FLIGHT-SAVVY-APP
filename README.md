@@ -46,3 +46,7 @@ Some screenshots of the app:
 <img src="img_1.png" width="300" >
 <img src="img_2.png" width="300" >
 <img src="img_3.png" width="300" >
+
+Link to the video demonstration of the app:
+
+https://youtu.be/EPGcQ21NG0Y
