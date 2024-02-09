@@ -22,11 +22,6 @@ cd flight-savvy/flight_savvy
 flutter pub get
 ```
 
-## Install Dependencies
-```bash
-flutter pub get
-```
-
 ## Run the App
 ```bash
 flutter run
